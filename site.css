@@ -123,12 +123,8 @@ a { color: inherit; }
 .section-rule { width: 100%; height: 1px; margin: 176px 0 0; border: 0; background: var(--line); }
 
 .consultation { width: 610px; margin: 34px auto 0; text-align: center; }
-.consultation .eyebrow {
-  margin: 0 0 18px; color: var(--red); font-family: var(--sans); font-size: 12px;
-  font-weight: 400; letter-spacing: .13em; text-transform: uppercase;
-}
 .consultation h2 {
-  margin: 0; font-family: var(--display); font-size: 25px; font-weight: 400;
+  margin: 0; font-family: var(--display); font-size: 38px; font-weight: 400;
   letter-spacing: .03em; line-height: 1.3; text-transform: uppercase;
 }
 .consultation .ornament { width: 110px; margin: 19px auto 22px; }
@@ -194,7 +190,7 @@ a { color: inherit; }
   .about-copy { max-width: 92%; margin: 31px 22px 0; font-size: 13px; line-height: 1.78; }
   .section-rule { margin-top: 68px; }
   .consultation { width: auto; margin: 35px 20px 0; }
-  .consultation h2 { font-size: 20px; }
+  .consultation h2 { font-size: 28px; }
   .consultation-copy { width: auto; max-width: 355px; font-size: 12px; line-height: 1.7; }
   .consultation-copy span { display: inline; }
   .cta { width: 100%; max-width: 374px; min-height: 58px; padding-left: 24px; font-size: 11px; }
