@@ -5,7 +5,7 @@ A responsive, semantic recreation of the supplied Empire Operating references.
 ## Pages
 
 - `index.html` — landing route using the About composition
-- `about.html` — “We design simple, boring systems…”
+- `about.html` — “We build simple, boring systems…”
 - `contact.html` — “Tell me about your business” and email action
 
 ## Preview
