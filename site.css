@@ -86,8 +86,9 @@ a { color: inherit; }
   height: 1126px;
   pointer-events: none;
   background:
-    linear-gradient(90deg, var(--black) 0%, rgba(4,4,4,.48) 8%, transparent 26%),
-    url('assets/roman-column.jpg') right top / 100% 100% no-repeat;
+    linear-gradient(90deg, var(--black) 0%, rgba(4,4,4,.72) 8%, transparent 26%),
+    linear-gradient(270deg, var(--black) 0%, rgba(4,4,4,.72) 3%, transparent 9%),
+    url('assets/roman-column-clean-v2.png') right top / 100% 100% no-repeat;
 }
 
 .page-main { position: relative; z-index: 1; }
