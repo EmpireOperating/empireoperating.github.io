@@ -29,7 +29,7 @@ class RootEntryPageTests(unittest.TestCase):
         for page in ("index.html", "about.html", "contact.html"):
             document = (ROOT / page).read_text(encoding="utf-8")
             self.assertIn(
-                'href="site.css?v=20260828-remove-workflow-intro-v1"',
+                'href="site.css?v=20260828-layout-polish-v1"',
                 document,
             )
 
@@ -106,6 +106,30 @@ class RootEntryPageTests(unittest.TestCase):
         self.assertIn("--red: #9b1218;", css)
         self.assertIn("--red-readable: #9b1218;", css)
         self.assertNotIn("--red-readable: #cf4b51;", css)
+
+    def test_workflow_transitions_use_map_rules_without_outer_duplicates(self) -> None:
+        css = (ROOT / "site.css").read_text(encoding="utf-8")
+        tailored = css.split(".tailored {", 1)[1].split("}", 1)[0]
+        possibilities = css.split(".possibilities {", 1)[1].split("}", 1)[0]
+        system_map = css.split(".system-map {", 1)[1].split("}", 1)[0]
+        self.assertNotIn("border-bottom", tailored)
+        self.assertNotIn("border-bottom", possibilities)
+        self.assertIn("border-top: 1px solid var(--line);", system_map)
+        self.assertIn("border-bottom: 1px solid var(--line);", system_map)
+
+    def test_narrow_screens_use_readable_navigation_and_workflow_text(self) -> None:
+        css = (ROOT / "site.css").read_text(encoding="utf-8")
+        mobile = css.split("@media (max-width: 700px)", 1)[1].split("@media (max-width: 380px)", 1)[0]
+        self.assertIn(".site-nav { gap: 18px; margin-top: 14px; font-size: 11px; }", mobile)
+        self.assertIn(".map-column small { font-size: 12px; }", mobile)
+        self.assertIn(".map-column ul { font-size: 14px; }", mobile)
+        self.assertIn(".consultation-copy { width: auto; max-width: 355px; font-size: 13px;", mobile)
+
+    def test_desktop_hero_rule_uses_the_tighter_post_reorder_spacing(self) -> None:
+        css = (ROOT / "site.css").read_text(encoding="utf-8")
+        desktop = css.split("@media (max-width: 700px)", 1)[0]
+        rule = desktop.split(".section-rule", 1)[1].split("}", 1)[0]
+        self.assertIn("margin: 128px 0 0;", rule)
 
     def test_workflow_connectors_use_rules_and_diamonds_not_arrows(self) -> None:
         css = (ROOT / "site.css").read_text(encoding="utf-8")
