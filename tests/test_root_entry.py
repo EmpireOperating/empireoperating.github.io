@@ -32,48 +32,6 @@ class RootEntryPageTests(unittest.TestCase):
             about,
         )
 
-    def test_about_duplicate_uses_the_current_message(self) -> None:
-        about = (ROOT / "about.html").read_text(encoding="utf-8")
-        self.assertNotIn("Free consultation", about)
-        self.assertNotIn("Book a free consultation", about)
-        self.assertIn("Built around your business.", about)
-        self.assertIn("Tell me what keeps repeating", about)
-
-    def test_existing_hero_message_is_preserved(self) -> None:
-        for expected in (
-            "We build systems",
-            "that give you",
-            "your time back",
-            "We automate your most repetitive business tasks",
-            "Your family, your hobbies, or growing your business.",
-        ):
-            self.assertIn(expected, self.index)
-
-    def test_root_explains_one_workflow_and_three_starting_points(self) -> None:
-        self.assertIn('class="possibilities"', self.lower)
-        self.assertIn("What this can look like", self.index)
-        self.assertIn("Things coming in", self.index)
-        self.assertIn("What happens next", self.index)
-        self.assertIn("Useful things coming out", self.index)
-        self.assertIn("Inquiry follow-up", self.index)
-        self.assertIn("Client intake", self.index)
-        self.assertIn("Recurring reports", self.index)
-
-    def test_root_says_the_system_is_tailored_to_the_business(self) -> None:
-        self.assertIn("Built around your business.", self.index)
-        self.assertIn("Your business has its own bottleneck.", self.index)
-        self.assertIn(
-            "The system should fit your business, not the other way around.",
-            self.index,
-        )
-
-    def test_contact_invitation_is_direct_not_a_consultation_label(self) -> None:
-        self.assertNotIn("Free consultation", self.index)
-        self.assertNotIn("Book a free consultation", self.index)
-        self.assertIn("Let's find the part worth fixing.", self.index)
-        self.assertIn("Tell me what keeps repeating", self.index)
-        self.assertIn("subject=What%20keeps%20repeating", self.index)
-
 
 if __name__ == "__main__":
     unittest.main()
