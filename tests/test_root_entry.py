@@ -35,8 +35,8 @@ class RootEntryPageTests(unittest.TestCase):
     def test_about_duplicate_uses_the_current_message(self) -> None:
         about = (ROOT / "about.html").read_text(encoding="utf-8")
         self.assertIn("Built around your business.", about)
-        self.assertIn("Free consultation", about)
         self.assertIn("Start the conversation", about)
+        self.assertNotIn("Free consultation", about)
         self.assertNotIn("Book a free consultation", about)
         self.assertNotIn("A few possible starting points", about)
 
@@ -71,10 +71,11 @@ class RootEntryPageTests(unittest.TestCase):
         )
 
     def test_consultation_starts_an_email_conversation_without_booking(self) -> None:
-        self.assertIn("Free consultation", self.index)
+        self.assertIn('<h2 id="consultation-title">Start the conversation</h2>', self.index)
         self.assertIn("Let's talk about your business and see if we can", self.index)
         self.assertIn("Start the conversation", self.index)
         self.assertIn("subject=Start%20the%20conversation", self.index)
+        self.assertNotIn("Free consultation", self.index)
         self.assertNotIn("Book a free consultation", self.index)
         self.assertNotIn("Let's find the part worth fixing.", self.index)
         self.assertNotIn("Tell me what keeps repeating", self.index)
