@@ -210,14 +210,14 @@ a { color: inherit; }
 .map-arrow { position: relative; height: 1px; background: #8f1b20; }
 .map-arrow::after {
   position: absolute;
-  top: -12px;
-  left: 50%;
-  padding: 0 5px;
-  content: '→';
+  top: 50%;
+  right: -4px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--red-readable);
+  content: '';
   background: #050404;
-  color: var(--red-readable);
-  font-size: 17px;
-  transform: translateX(-50%);
+  transform: translateY(-50%) rotate(45deg);
 }
 .tailored {
   width: 680px;
@@ -304,7 +304,13 @@ a { color: inherit; }
   .map-column { min-height: auto; border-left: 0; }
   .map-column-middle { min-height: auto; }
   .map-arrow { width: 1px; height: 35px; margin: auto; }
-  .map-arrow::after { transform: translateX(-50%) rotate(90deg); }
+  .map-arrow::after {
+    top: auto;
+    right: auto;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+  }
   .tailored { width: auto; margin: 0 20px; padding: 45px 0 48px; }
   .tailored-copy { font-size: 13px; }
   .consultation { width: auto; margin: 35px 20px 0; }

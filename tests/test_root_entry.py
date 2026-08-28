@@ -83,6 +83,13 @@ class RootEntryPageTests(unittest.TestCase):
         self.assertIn("--red-readable: #9b1218;", css)
         self.assertNotIn("--red-readable: #cf4b51;", css)
 
+    def test_workflow_connectors_use_rules_and_diamonds_not_arrows(self) -> None:
+        css = (ROOT / "site.css").read_text(encoding="utf-8")
+        connector = css.split(".map-arrow::after", 1)[1].split("}", 1)[0]
+        self.assertNotIn("content: '→';", connector)
+        self.assertIn("border: 1px solid var(--red-readable);", connector)
+        self.assertIn("rotate(45deg)", connector)
+
 
 if __name__ == "__main__":
     unittest.main()
