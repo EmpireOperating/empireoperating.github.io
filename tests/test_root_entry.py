@@ -91,6 +91,15 @@ class RootEntryPageTests(unittest.TestCase):
                 document,
             )
 
+    def test_tailored_copy_introduces_the_workflow_below(self) -> None:
+        for page in ("index.html", "about.html"):
+            document = (ROOT / page).read_text(encoding="utf-8")
+            self.assertIn(
+                "The workflow below is only one example. Your business has its own bottleneck.",
+                document,
+            )
+            self.assertNotIn("This is only one example. Your business has its own bottleneck.", document)
+
     def test_consultation_starts_an_email_conversation_without_booking(self) -> None:
         self.assertIn('<h2 id="consultation-title">Start the conversation</h2>', self.index)
         self.assertIn("Let's talk about your business and see if we can", self.index)
