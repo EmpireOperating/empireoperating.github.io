@@ -34,10 +34,10 @@ class RootEntryPageTests(unittest.TestCase):
 
     def test_about_duplicate_uses_the_current_message(self) -> None:
         about = (ROOT / "about.html").read_text(encoding="utf-8")
-        self.assertNotIn("Free consultation", about)
-        self.assertNotIn("Book a free consultation", about)
         self.assertIn("Built around your business.", about)
-        self.assertIn("Tell me what keeps repeating", about)
+        self.assertIn("Free consultation", about)
+        self.assertIn("Book a free consultation", about)
+        self.assertNotIn("A few possible starting points", about)
 
     def test_existing_hero_message_is_preserved(self) -> None:
         for expected in (
@@ -49,15 +49,17 @@ class RootEntryPageTests(unittest.TestCase):
         ):
             self.assertIn(expected, self.index)
 
-    def test_root_explains_one_workflow_and_three_starting_points(self) -> None:
+    def test_root_explains_one_workflow_without_a_starting_point_catalog(self) -> None:
         self.assertIn('class="possibilities"', self.lower)
         self.assertIn("What this can look like", self.index)
         self.assertIn("Things coming in", self.index)
         self.assertIn("What happens next", self.index)
         self.assertIn("Useful things coming out", self.index)
-        self.assertIn("Inquiry follow-up", self.index)
-        self.assertIn("Client intake", self.index)
-        self.assertIn("Recurring reports", self.index)
+        self.assertNotIn("One example", self.index)
+        self.assertNotIn("A few possible starting points", self.index)
+        self.assertNotIn("Inquiry follow-up", self.index)
+        self.assertNotIn("Client intake", self.index)
+        self.assertNotIn("Recurring reports", self.index)
 
     def test_root_says_the_system_is_tailored_to_the_business(self) -> None:
         self.assertIn("Built around your business.", self.index)
@@ -67,12 +69,13 @@ class RootEntryPageTests(unittest.TestCase):
             self.index,
         )
 
-    def test_contact_invitation_is_direct_not_a_consultation_label(self) -> None:
-        self.assertNotIn("Free consultation", self.index)
-        self.assertNotIn("Book a free consultation", self.index)
-        self.assertIn("Let's find the part worth fixing.", self.index)
-        self.assertIn("Tell me what keeps repeating", self.index)
-        self.assertIn("subject=What%20keeps%20repeating", self.index)
+    def test_original_free_consultation_wording_is_restored(self) -> None:
+        self.assertIn("Free consultation", self.index)
+        self.assertIn("Book a free consultation", self.index)
+        self.assertIn("Let's talk about your business and see if we can", self.index)
+        self.assertIn("subject=Free%20Consultation", self.index)
+        self.assertNotIn("Let's find the part worth fixing.", self.index)
+        self.assertNotIn("Tell me what keeps repeating", self.index)
 
 
 if __name__ == "__main__":
