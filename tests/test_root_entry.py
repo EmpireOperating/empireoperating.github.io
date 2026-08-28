@@ -50,17 +50,25 @@ class RootEntryPageTests(unittest.TestCase):
         ):
             self.assertIn(expected, self.index)
 
-    def test_root_explains_one_workflow_without_a_starting_point_catalog(self) -> None:
-        self.assertIn('class="possibilities"', self.lower)
-        self.assertIn("What this can look like", self.index)
-        self.assertIn("Things coming in", self.index)
-        self.assertIn("What happens next", self.index)
-        self.assertIn("Useful things coming out", self.index)
-        self.assertNotIn("One example", self.index)
-        self.assertNotIn("A few possible starting points", self.index)
-        self.assertNotIn("Inquiry follow-up", self.index)
-        self.assertNotIn("Client intake", self.index)
-        self.assertNotIn("Recurring reports", self.index)
+    def test_workflow_example_has_no_intro_block_on_either_page(self) -> None:
+        for page in ("index.html", "about.html"):
+            document = (ROOT / page).read_text(encoding="utf-8")
+            self.assertIn('class="possibilities"', document.lower())
+            self.assertIn("Things coming in", document)
+            self.assertIn("What happens next", document)
+            self.assertIn("Useful things coming out", document)
+            self.assertNotIn("What this can look like", document)
+            self.assertNotIn("From repetitive work", document)
+            self.assertNotIn("to something ready to use.", document)
+            self.assertNotIn(
+                "Work comes in, the repeatable steps get handled, and the right person receives something clear and ready to use.",
+                document,
+            )
+            self.assertNotIn("One example", document)
+            self.assertNotIn("A few possible starting points", document)
+            self.assertNotIn("Inquiry follow-up", document)
+            self.assertNotIn("Client intake", document)
+            self.assertNotIn("Recurring reports", document)
 
     def test_tailored_business_block_precedes_the_workflow_example_on_both_pages(self) -> None:
         for page in ("index.html", "about.html"):
