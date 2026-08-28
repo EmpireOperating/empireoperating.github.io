@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Inter:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Inter:wght@300;400&family=IBM+Plex+Mono:wght@400&display=swap');
 
 :root {
   --ivory: #c6aa92;
@@ -6,9 +6,11 @@
   --black: #040404;
   --red: #9b1218;
   --red-dark: #5a0609;
+  --red-readable: #cf4b51;
   --line: rgba(198, 170, 146, .34);
   --display: 'Cinzel', 'Times New Roman', serif;
   --sans: 'Inter', Arial, sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
 }
 
 * { box-sizing: border-box; }
@@ -123,7 +125,163 @@ a { color: inherit; }
 .about-copy span { display: block; }
 .section-rule { width: 100%; height: 1px; margin: 176px 0 0; border: 0; background: var(--line); }
 
-.consultation { width: 610px; margin: 34px auto 0; text-align: center; }
+.possibilities {
+  padding: 59px 56px 66px;
+  border-bottom: 1px solid var(--line);
+  background: radial-gradient(circle at 50% 27%, rgba(92,8,12,.12), transparent 44%), var(--black);
+}
+.section-eyebrow {
+  margin: 0;
+  color: var(--red-readable);
+  font-family: var(--display);
+  font-size: 13px;
+  letter-spacing: .14em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.possibilities h2, .tailored h2 {
+  margin: 15px 0 0;
+  font-family: var(--display);
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: .025em;
+  line-height: 1.38;
+  text-align: center;
+  text-transform: uppercase;
+}
+.possibilities > .ornament, .tailored .ornament { width: 110px; margin: 20px auto 22px; }
+.possibilities-intro {
+  max-width: 600px;
+  margin: 0 auto;
+  color: #b8a69d;
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.75;
+  text-align: center;
+}
+.system-map {
+  display: grid;
+  grid-template-columns: 1fr 48px 1.15fr 48px 1fr;
+  align-items: center;
+  margin-top: 44px;
+  padding: 31px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.map-column {
+  min-height: 232px;
+  padding: 22px 17px;
+  border-left: 1px solid rgba(198,170,146,.24);
+}
+.map-column small {
+  display: block;
+  color: var(--red-readable);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.map-column h3 {
+  margin: 14px 0 17px;
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.map-column ul {
+  margin: 0;
+  padding: 0;
+  color: #b1a098;
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.9;
+  list-style: none;
+}
+.map-column li::before { margin-right: 8px; color: var(--red-readable); content: '◇'; }
+.map-column-middle {
+  min-height: 274px;
+  padding: 27px 20px;
+  border: 1px solid rgba(155,18,24,.66);
+  background: rgba(10,6,6,.84);
+}
+.map-column-middle h3 { color: #d0b49d; font-size: 20px; }
+.map-arrow { position: relative; height: 1px; background: #8f1b20; }
+.map-arrow::after {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  padding: 0 5px;
+  content: '→';
+  background: #050404;
+  color: var(--red-readable);
+  font-size: 17px;
+  transform: translateX(-50%);
+}
+.map-example {
+  margin: 23px 0 0;
+  color: #b2a098;
+  font-family: var(--sans);
+  font-size: 13px;
+  text-align: center;
+}
+.map-example b {
+  margin-right: 11px;
+  color: var(--red-readable);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.starting-points { margin-top: 49px; }
+.starting-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 18px; }
+.starting-head h3 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.starting-head span {
+  color: #9f8e86;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .04em;
+}
+.workflow-row {
+  display: grid;
+  grid-template-columns: 36px 1fr 1.55fr;
+  gap: 19px;
+  align-items: center;
+  min-height: 104px;
+  border-top: 1px solid var(--line);
+  font-family: var(--sans);
+}
+.workflow-row:last-child { border-bottom: 1px solid var(--line); }
+.workflow-row .num { color: var(--red-readable); font-family: var(--mono); font-size: 12px; }
+.workflow-row strong {
+  font-family: var(--display);
+  font-size: 15px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.workflow-row p { margin: 0; color: #b09f97; font-size: 13px; line-height: 1.65; }
+.workflow-row p b { color: #c7ad97; font-weight: 400; }
+
+.tailored {
+  width: 680px;
+  margin: 0 auto;
+  padding: 58px 0 61px;
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+.tailored-copy { color: #b2a198; font-family: var(--sans); font-size: 15px; font-weight: 300; line-height: 1.82; }
+.tailored-copy p { margin: 0 auto 14px; }
+.tailored-copy p:last-child { margin-bottom: 0; color: var(--ivory); }
+
+.consultation { width: 650px; margin: 43px auto 0; text-align: center; }
 .consultation h2 {
   margin: 0; color: var(--red); font-family: var(--display); font-size: 38px; font-weight: 400;
   letter-spacing: .03em; line-height: 1.3; text-transform: uppercase;
@@ -190,6 +348,20 @@ a { color: inherit; }
   .hero-ornament { margin: 27px 0 0 22px; }
   .about-copy { max-width: 92%; margin: 31px 22px 0; font-size: 13px; line-height: 1.78; }
   .section-rule { margin-top: 68px; }
+  .possibilities { padding: 42px 20px 50px; }
+  .possibilities h2, .tailored h2 { font-size: 26px; }
+  .possibilities-intro { font-size: 14px; }
+  .system-map { grid-template-columns: 1fr; padding: 26px 0; }
+  .map-column { min-height: auto; border-left: 0; }
+  .map-column-middle { min-height: auto; }
+  .map-arrow { width: 1px; height: 35px; margin: auto; }
+  .map-arrow::after { transform: translateX(-50%) rotate(90deg); }
+  .starting-head { display: block; }
+  .starting-head span { display: block; margin-top: 10px; }
+  .workflow-row { grid-template-columns: 28px 1fr; padding: 20px 0; }
+  .workflow-row p { grid-column: 2; }
+  .tailored { width: auto; margin: 0 20px; padding: 45px 0 48px; }
+  .tailored-copy { font-size: 13px; }
   .consultation { width: auto; margin: 35px 20px 0; }
   .consultation h2 { font-size: 28px; }
   .consultation-copy { width: auto; max-width: 355px; font-size: 12px; line-height: 1.7; }
