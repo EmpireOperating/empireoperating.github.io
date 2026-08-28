@@ -62,13 +62,18 @@ class RootEntryPageTests(unittest.TestCase):
         self.assertNotIn("Client intake", self.index)
         self.assertNotIn("Recurring reports", self.index)
 
-    def test_root_says_the_system_is_tailored_to_the_business(self) -> None:
-        self.assertIn("Built around your business.", self.index)
-        self.assertIn("Your business has its own bottleneck.", self.index)
-        self.assertIn(
-            "The system should fit your business, not the other way around.",
-            self.index,
-        )
+    def test_tailored_business_block_precedes_the_workflow_example_on_both_pages(self) -> None:
+        for page in ("index.html", "about.html"):
+            document = (ROOT / page).read_text(encoding="utf-8")
+            tailored = document.index('<section class="tailored"')
+            example = document.index('<div class="system-map"')
+            self.assertLess(tailored, example)
+            self.assertIn("Built around your business.", document)
+            self.assertIn("Your business has its own bottleneck.", document)
+            self.assertIn(
+                "The system should fit your business, not the other way around.",
+                document,
+            )
 
     def test_consultation_starts_an_email_conversation_without_booking(self) -> None:
         self.assertIn('<h2 id="consultation-title">Start the conversation</h2>', self.index)
