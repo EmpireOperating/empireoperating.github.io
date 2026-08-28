@@ -25,6 +25,14 @@ class RootEntryPageTests(unittest.TestCase):
         self.assertIn('id="critical-shell"', self.lower)
         self.assertIn("background: #040404", self.lower)
 
+    def test_all_pages_use_the_current_stylesheet_cache_key(self) -> None:
+        for page in ("index.html", "about.html", "contact.html"):
+            document = (ROOT / page).read_text(encoding="utf-8")
+            self.assertIn(
+                'href="site.css?v=20260828-remove-workflow-intro-v1"',
+                document,
+            )
+
     def test_about_duplicate_points_to_root_canonical(self) -> None:
         about = (ROOT / "about.html").read_text(encoding="utf-8").lower()
         self.assertIn(
