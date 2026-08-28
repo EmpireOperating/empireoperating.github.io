@@ -77,6 +77,12 @@ class RootEntryPageTests(unittest.TestCase):
         self.assertNotIn("Let's find the part worth fixing.", self.index)
         self.assertNotIn("Tell me what keeps repeating", self.index)
 
+    def test_added_section_uses_the_canonical_brand_red(self) -> None:
+        css = (ROOT / "site.css").read_text(encoding="utf-8")
+        self.assertIn("--red: #9b1218;", css)
+        self.assertIn("--red-readable: #9b1218;", css)
+        self.assertNotIn("--red-readable: #cf4b51;", css)
+
 
 if __name__ == "__main__":
     unittest.main()
