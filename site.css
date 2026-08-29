@@ -212,77 +212,63 @@ a { color: inherit; }
 .tailored-copy p:last-child { margin-bottom: 0; color: var(--ivory); }
 
 .team-owned-system {
-  margin: 0 42px 68px;
-  overflow: hidden;
-  border: 1px solid #33475b;
-  border-radius: 6px;
-  background: #172839;
-  color: #f2f0ea;
+  margin: 0 56px 76px;
+  background: var(--black);
+  color: var(--ivory);
 }
 .team-owned-intro {
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 48px;
+  grid-template-columns: .95fr 1.55fr;
+  gap: 76px;
   align-items: start;
-  padding: 38px 40px 34px;
-  border-bottom: 1px solid #33475b;
+  padding: 0 0 72px;
 }
 .team-owned-intro h2 {
   margin: 0;
-  font-family: var(--sans);
-  font-size: 31px;
+  max-width: 340px;
+  font-family: var(--display);
+  font-size: 43px;
   font-weight: 400;
-  letter-spacing: -.035em;
-  line-height: 1.08;
+  letter-spacing: .01em;
+  line-height: 1.28;
 }
 .team-owned-intro p {
-  position: relative;
   margin: 0;
-  padding-right: 19px;
-  color: #d9dce1;
+  max-width: 455px;
+  color: #b2a198;
   font-family: var(--sans);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 300;
-  line-height: 1.62;
-}
-.team-owned-intro p::after {
-  position: absolute;
-  top: -16px;
-  right: -3px;
-  color: #b68bce;
-  content: '”';
-  font-family: Georgia, serif;
-  font-size: 36px;
-  line-height: 1;
+  line-height: 1.9;
 }
 .team-owned-stages { display: grid; grid-template-columns: repeat(3, 1fr); }
-.team-owned-stage { min-width: 0; padding: 23px 24px 28px; }
-.team-owned-stage + .team-owned-stage { border-left: 1px solid #33475b; }
+.team-owned-stage { min-width: 0; padding: 24px 0 0; border-top: 1px solid var(--line); }
+.team-owned-stage + .team-owned-stage { margin-left: 36px; }
 .team-owned-index {
-  margin: 0 0 25px;
-  color: #bf94d4;
-  font-family: var(--sans);
-  font-size: 11px;
+  margin: 0 0 23px;
+  color: var(--red);
+  font-family: var(--display);
+  font-size: 12px;
   font-weight: 400;
-  letter-spacing: .02em;
+  letter-spacing: .03em;
 }
 .team-owned-stage h3 {
-  min-height: 42px;
-  margin: 0 0 20px;
-  color: #f4f1ec;
-  font-family: var(--sans);
-  font-size: 16px;
+  min-height: 48px;
+  margin: 0 0 18px;
+  color: var(--ivory);
+  font-family: var(--display);
+  font-size: 20px;
   font-weight: 400;
-  letter-spacing: -.02em;
-  line-height: 1.2;
+  letter-spacing: .01em;
+  line-height: 1.4;
 }
 .team-owned-stage > p:last-child {
   margin: 0;
-  color: #d9dce1;
+  color: #aa9b91;
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 300;
-  line-height: 1.52;
+  line-height: 1.85;
 }
 
 .consultation { width: 650px; margin: 43px auto 0; text-align: center; }
@@ -369,16 +355,16 @@ a { color: inherit; }
   }
   .tailored { width: auto; margin: 0 20px; padding: 45px 0 48px; }
   .tailored-copy { font-size: 13px; }
-  .team-owned-system { margin: 0 0 45px; border-radius: 4px; }
-  .team-owned-intro { display: block; padding: 20px 12px 17px; }
-  .team-owned-intro h2 { max-width: 290px; font-size: 20px; }
-  .team-owned-intro p { margin-top: 12px; padding-right: 13px; font-size: 11px; line-height: 1.42; }
-  .team-owned-intro p::after { top: -11px; right: -1px; font-size: 24px; }
-  .team-owned-stages { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .team-owned-stage { padding: 13px 8px 17px; }
-  .team-owned-index { margin-bottom: 17px; font-size: 8px; }
-  .team-owned-stage h3 { min-height: 29px; margin-bottom: 15px; font-size: 10px; line-height: 1.13; }
-  .team-owned-stage > p:last-child { font-size: 10px; line-height: 1.4; }
+  .team-owned-system { margin: 0 22px 56px; }
+  .team-owned-intro { display: block; padding: 0 0 42px; }
+  .team-owned-intro h2 { max-width: 280px; font-size: 32px; line-height: 1.28; }
+  .team-owned-intro p { margin-top: 22px; font-size: 13px; line-height: 1.78; }
+  .team-owned-stages { grid-template-columns: 1fr; }
+  .team-owned-stage { padding: 22px 0 28px; }
+  .team-owned-stage + .team-owned-stage { margin-left: 0; }
+  .team-owned-index { margin-bottom: 16px; font-size: 11px; }
+  .team-owned-stage h3 { min-height: auto; margin-bottom: 14px; font-size: 18px; }
+  .team-owned-stage > p:last-child { font-size: 13px; line-height: 1.75; }
   .consultation { width: auto; margin: 35px 20px 0; }
   .consultation h2 { font-size: 28px; }
   .consultation-copy { width: auto; max-width: 355px; font-size: 13px; line-height: 1.7; }

@@ -29,7 +29,7 @@ class RootEntryPageTests(unittest.TestCase):
         for page in ("index.html", "about.html", "contact.html"):
             document = (ROOT / page).read_text(encoding="utf-8")
             self.assertIn(
-                'href="site.css?v=20260829-team-owned-system-v1"',
+                'href="site.css?v=20260829-editorial-team-owned-v1"',
                 document,
             )
 
@@ -147,8 +147,12 @@ class RootEntryPageTests(unittest.TestCase):
         self.assertIn(".team-owned-system", css)
         self.assertIn(".team-owned-stages", css)
         self.assertIn("grid-template-columns: repeat(3, 1fr);", css)
+        self.assertIn("background: var(--black);", css)
+        self.assertIn("font-family: var(--display);", css)
+        self.assertNotIn("background: #172839;", css)
+        self.assertNotIn("border-radius: 6px;", css)
         mobile = css.split("@media (max-width: 700px)", 1)[1].split("@media (max-width: 380px)", 1)[0]
-        self.assertIn(".team-owned-stages { grid-template-columns: repeat(3, minmax(0, 1fr)); }", mobile)
+        self.assertIn(".team-owned-stages { grid-template-columns: 1fr; }", mobile)
 
     def test_consultation_starts_an_email_conversation_without_booking(self) -> None:
         self.assertIn('<h2 id="consultation-title">Start the conversation</h2>', self.index)
