@@ -56,7 +56,7 @@ class RootEntryPageTests(unittest.TestCase):
         )
         expected_copy = (
             "Most businesses already have many of the tools they need. What they often lack is an operating layer that connects those tools, people, and channels into one coherent system.",
-            "The result is less time spent manually coordinating work—and fewer opportunities, follow-ups, and important details falling through the cracks.",
+            "Once connected, the result is less time spent manually coordinating work—and fewer opportunities, follow-ups, and important details falling through the cracks.",
         )
         for page in ("index.html", "about.html"):
             document = (ROOT / page).read_text(encoding="utf-8")
