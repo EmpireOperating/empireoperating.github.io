@@ -25,6 +25,23 @@ class RootEntryPageTests(unittest.TestCase):
         self.assertIn('id="critical-shell"', self.lower)
         self.assertIn("background: #040404", self.lower)
 
+    def test_home_metadata_and_navigation_use_the_operating_systems_positioning(self) -> None:
+        expected_description = (
+            "Empire Operating builds practical operating layers that connect a business’s "
+            "people, tools, and channels—so important work is captured, owned, and moved forward."
+        )
+        for page in ("index.html", "about.html"):
+            document = (ROOT / page).read_text(encoding="utf-8")
+            self.assertIn("<title>Empire Operating | Practical Operating Systems</title>", document)
+            self.assertIn(expected_description, document)
+            self.assertIn('href="index.html" aria-current="page">Home</a>', document)
+            self.assertNotIn("Business Automation", document)
+            self.assertNotIn("automates repetitive business tasks", document)
+
+        contact = (ROOT / "contact.html").read_text(encoding="utf-8")
+        self.assertIn('href="index.html">Home</a>', contact)
+        self.assertNotIn(">About<", contact)
+
     def test_all_pages_use_the_current_stylesheet_cache_key(self) -> None:
         for page in ("index.html", "about.html", "contact.html"):
             document = (ROOT / page).read_text(encoding="utf-8")
