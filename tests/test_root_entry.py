@@ -65,25 +65,38 @@ class RootEntryPageTests(unittest.TestCase):
             self.assertNotIn("We automate your most repetitive business tasks", document)
             self.assertNotIn("Your family, your hobbies, or growing your business.", document)
 
-    def test_workflow_example_has_no_intro_block_on_either_page(self) -> None:
+    def test_workflow_example_uses_the_operating_layer_copy_on_both_pages(self) -> None:
+        expected = (
+            "WORK ARRIVES",
+            "THE OPERATING LAYER",
+            "WORK MOVES FORWARD",
+            "Capture it once.",
+            "Give it a clear path.",
+            "Ready for action.",
+            "Inquiries, emails, and calls",
+            "Connect it to the right client, job, member, or record",
+            "The right person can see what needs attention",
+            "Forms, documents, and requests",
+            "Make the owner, status, next step, and due date visible",
+            "Follow-ups happen at the right time",
+            "Team updates and internal notes",
+            "Handle routine coordination and reminders",
+            "Clients receive clear, consistent responses",
+            "Work from the tools already in use",
+            "Keep a reliable record of what happened",
+            "Managers can see what is moving, waiting, or stuck",
+        )
         for page in ("index.html", "about.html"):
             document = (ROOT / page).read_text(encoding="utf-8")
             self.assertIn('class="possibilities"', document.lower())
-            self.assertIn("Things coming in", document)
-            self.assertIn("What happens next", document)
-            self.assertIn("Useful things coming out", document)
-            self.assertNotIn("What this can look like", document)
-            self.assertNotIn("From repetitive work", document)
-            self.assertNotIn("to something ready to use.", document)
-            self.assertNotIn(
-                "Work comes in, the repeatable steps get handled, and the right person receives something clear and ready to use.",
-                document,
-            )
-            self.assertNotIn("One example", document)
-            self.assertNotIn("A few possible starting points", document)
-            self.assertNotIn("Inquiry follow-up", document)
-            self.assertNotIn("Client intake", document)
-            self.assertNotIn("Recurring reports", document)
+            for copy in expected:
+                self.assertIn(copy, document)
+            self.assertNotIn("Things coming in", document)
+            self.assertNotIn("What happens next", document)
+            self.assertNotIn("Useful things coming out", document)
+            self.assertNotIn("Sort. Check.", document)
+            self.assertNotIn("Move it forward.", document)
+            self.assertNotIn("A clean reply draft", document)
 
     def test_tailored_business_block_precedes_the_workflow_example_on_both_pages(self) -> None:
         for page in ("index.html", "about.html"):
