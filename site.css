@@ -212,7 +212,10 @@ a { color: inherit; }
 .tailored-copy p:last-child { margin-bottom: 0; color: var(--ivory); }
 
 .team-owned-system {
-  margin: 0 56px 76px;
+  margin: 0 56px;
+  padding: 52px 0 54px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
   background: var(--black);
   color: var(--ivory);
 }
@@ -355,7 +358,7 @@ a { color: inherit; }
   }
   .tailored { width: auto; margin: 0 20px; padding: 45px 0 48px; }
   .tailored-copy { font-size: 13px; }
-  .team-owned-system { margin: 0 22px 56px; }
+  .team-owned-system { margin: 0 22px; padding: 38px 0 40px; }
   .team-owned-intro { display: block; padding: 0 0 42px; }
   .team-owned-intro h2 { max-width: 280px; font-size: 32px; line-height: 1.28; }
   .team-owned-intro p { margin-top: 22px; font-size: 13px; line-height: 1.78; }

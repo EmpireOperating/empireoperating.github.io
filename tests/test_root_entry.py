@@ -29,7 +29,7 @@ class RootEntryPageTests(unittest.TestCase):
         for page in ("index.html", "about.html", "contact.html"):
             document = (ROOT / page).read_text(encoding="utf-8")
             self.assertIn(
-                'href="site.css?v=20260829-editorial-team-owned-v1"',
+                'href="site.css?v=20260829-editorial-section-boundaries-v1"',
                 document,
             )
 
@@ -151,6 +151,9 @@ class RootEntryPageTests(unittest.TestCase):
         self.assertIn("font-family: var(--display);", css)
         self.assertNotIn("background: #172839;", css)
         self.assertNotIn("border-radius: 6px;", css)
+        team_section = css.split(".team-owned-system {", 1)[1].split("}", 1)[0]
+        self.assertIn("border-top: 1px solid var(--line);", team_section)
+        self.assertIn("border-bottom: 1px solid var(--line);", team_section)
         mobile = css.split("@media (max-width: 700px)", 1)[1].split("@media (max-width: 380px)", 1)[0]
         self.assertIn(".team-owned-stages { grid-template-columns: 1fr; }", mobile)
 
