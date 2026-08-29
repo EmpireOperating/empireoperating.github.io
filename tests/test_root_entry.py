@@ -29,7 +29,7 @@ class RootEntryPageTests(unittest.TestCase):
         for page in ("index.html", "about.html", "contact.html"):
             document = (ROOT / page).read_text(encoding="utf-8")
             self.assertIn(
-                'href="site.css?v=20260829-editorial-single-divider-v1"',
+                'href="site.css?v=20260829-conversation-copy-v1"',
                 document,
             )
 
@@ -159,13 +159,17 @@ class RootEntryPageTests(unittest.TestCase):
 
     def test_consultation_starts_an_email_conversation_without_booking(self) -> None:
         self.assertIn('<h2 id="consultation-title">Start the conversation</h2>', self.index)
-        self.assertIn("Let's talk about your business and see if we can", self.index)
+        self.assertIn(
+            "Tell us about your business. We’d enjoy hearing about what is working well and what you would like to improve. If there is a way we can help, we’d be glad to talk it through.",
+            self.index,
+        )
         self.assertIn("Start the conversation", self.index)
         self.assertIn("subject=Start%20the%20conversation", self.index)
         self.assertNotIn("Free consultation", self.index)
         self.assertNotIn("Book a free consultation", self.index)
         self.assertNotIn("Let's find the part worth fixing.", self.index)
         self.assertNotIn("Tell me what keeps repeating", self.index)
+        self.assertNotIn("Let's talk about your business and see if we can", self.index)
 
     def test_added_section_uses_the_canonical_brand_red(self) -> None:
         css = (ROOT / "site.css").read_text(encoding="utf-8")
