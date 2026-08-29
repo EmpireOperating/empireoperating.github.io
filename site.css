@@ -380,7 +380,7 @@ a { color: inherit; }
   .contact-page .column-art { top: 92px; height: 443px; clip-path: none; }
   .contact-page .site-shell { min-height: 585px; }
   .contact-main { width: auto; margin: 65px 20px 0; text-align: left; }
-  .contact-main .display-title { font-size: clamp(29px, 8.3vw, 40px); line-height: 1.35; letter-spacing: .01em; }
+  .contact-main .display-title { font-size: clamp(28px, 7.5vw, 36px); line-height: 1.35; letter-spacing: .01em; }
   .contact-main .ornament { margin: 27px 0 0; }
   .contact-copy { width: auto; max-width: 335px; margin-top: 22px; font-size: 13px; line-height: 1.72; }
   .contact-email { margin-top: 28px; font-size: clamp(20px, 6.7vw, 30px); overflow-wrap: anywhere; }
