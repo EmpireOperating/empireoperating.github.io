@@ -29,7 +29,7 @@ class RootEntryPageTests(unittest.TestCase):
         for page in ("index.html", "about.html", "contact.html"):
             document = (ROOT / page).read_text(encoding="utf-8")
             self.assertIn(
-                'href="site.css?v=20260829-hero-operating-layer-v1"',
+                'href="site.css?v=20260829-team-owned-system-v1"',
                 document,
             )
 
@@ -119,6 +119,36 @@ class RootEntryPageTests(unittest.TestCase):
                 document,
             )
             self.assertNotIn("This is only one example. Your business has its own bottleneck.", document)
+
+    def test_team_owned_system_section_precedes_the_conversation_on_both_pages(self) -> None:
+        expected = (
+            "A SYSTEM YOUR TEAM CAN OWN.",
+            "We map your workflows and identify the process creating the most friction. Then we build the smallest useful system to make it reliable, document the handoff, and keep improving it when you need help.",
+            "01 / UNDERSTAND",
+            "MAP THE WORK.",
+            "Before we design anything, we learn how your business actually runs—who does what, where work enters, how it moves between people and tools, and where it slows down or gets missed.",
+            "02 / BUILD",
+            "MAKE IT RELIABLE.",
+            "We connect the tools you already use into a clear operating layer—shared operational record, a dashboard—or whatever form of operational oversight your particular workflows require.",
+            "03 / HANDOFF",
+            "KEEP IT YOURS.",
+            "Your business keeps control of its data and day-to-day tools. We remain available for maintenance and thoughtful improvements.",
+        )
+        for page in ("index.html", "about.html"):
+            document = (ROOT / page).read_text(encoding="utf-8")
+            section = document.index('<section class="team-owned-system"')
+            consultation = document.index('<section class="consultation"')
+            self.assertLess(section, consultation)
+            for copy in expected:
+                self.assertIn(copy, document)
+
+    def test_team_owned_system_section_has_a_responsive_three_stage_card(self) -> None:
+        css = (ROOT / "site.css").read_text(encoding="utf-8")
+        self.assertIn(".team-owned-system", css)
+        self.assertIn(".team-owned-stages", css)
+        self.assertIn("grid-template-columns: repeat(3, 1fr);", css)
+        mobile = css.split("@media (max-width: 700px)", 1)[1].split("@media (max-width: 380px)", 1)[0]
+        self.assertIn(".team-owned-stages { grid-template-columns: repeat(3, minmax(0, 1fr)); }", mobile)
 
     def test_consultation_starts_an_email_conversation_without_booking(self) -> None:
         self.assertIn('<h2 id="consultation-title">Start the conversation</h2>', self.index)
