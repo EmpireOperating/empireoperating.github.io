@@ -29,7 +29,7 @@ class RootEntryPageTests(unittest.TestCase):
         for page in ("index.html", "about.html", "contact.html"):
             document = (ROOT / page).read_text(encoding="utf-8")
             self.assertIn(
-                'href="site.css?v=20260828-layout-polish-v1"',
+                'href="site.css?v=20260829-hero-operating-layer-v1"',
                 document,
             )
 
@@ -48,15 +48,22 @@ class RootEntryPageTests(unittest.TestCase):
         self.assertNotIn("Book a free consultation", about)
         self.assertNotIn("A few possible starting points", about)
 
-    def test_existing_hero_message_is_preserved(self) -> None:
-        for expected in (
+    def test_hero_keeps_the_title_and_uses_the_operating_layer_copy(self) -> None:
+        expected_title = (
             "We build systems",
             "that give you",
             "your time back",
-            "We automate your most repetitive business tasks",
-            "Your family, your hobbies, or growing your business.",
-        ):
-            self.assertIn(expected, self.index)
+        )
+        expected_copy = (
+            "Most businesses already have many of the tools they need. What they often lack is an operating layer that connects those tools, people, and channels into one coherent system.",
+            "The result is less time spent manually coordinating work—and fewer opportunities, follow-ups, and important details falling through the cracks.",
+        )
+        for page in ("index.html", "about.html"):
+            document = (ROOT / page).read_text(encoding="utf-8")
+            for expected in (*expected_title, *expected_copy):
+                self.assertIn(expected, document)
+            self.assertNotIn("We automate your most repetitive business tasks", document)
+            self.assertNotIn("Your family, your hobbies, or growing your business.", document)
 
     def test_workflow_example_has_no_intro_block_on_either_page(self) -> None:
         for page in ("index.html", "about.html"):
