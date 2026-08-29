@@ -29,7 +29,7 @@ class RootEntryPageTests(unittest.TestCase):
         for page in ("index.html", "about.html", "contact.html"):
             document = (ROOT / page).read_text(encoding="utf-8")
             self.assertIn(
-                'href="site.css?v=20260829-conversation-copy-v1"',
+                'href="site.css?v=20260829-contact-invitation-v1"',
                 document,
             )
 
@@ -170,6 +170,18 @@ class RootEntryPageTests(unittest.TestCase):
         self.assertNotIn("Let's find the part worth fixing.", self.index)
         self.assertNotIn("Tell me what keeps repeating", self.index)
         self.assertNotIn("Let's talk about your business and see if we can", self.index)
+
+    def test_contact_page_uses_the_contact_invitation(self) -> None:
+        contact = (ROOT / "contact.html").read_text(encoding="utf-8")
+        css = (ROOT / "site.css").read_text(encoding="utf-8")
+        self.assertIn("Have a question or", contact)
+        self.assertIn("want to learn more about", contact)
+        self.assertIn("Empire Operating?", contact)
+        self.assertIn("We’d be glad to hear from you.", contact)
+        self.assertNotIn("Tell me about", contact)
+        mobile = css.split("@media (max-width: 700px)", 1)[1].split("@media (max-width: 380px)", 1)[0]
+        self.assertIn(".contact-main .display-title { font-size: clamp(29px, 8.3vw, 40px);", mobile)
+        self.assertIn(".contact-bottom { position: relative; top: auto; right: auto; bottom: auto; left: auto; margin: 100px 0 0; }", mobile)
 
     def test_added_section_uses_the_canonical_brand_red(self) -> None:
         css = (ROOT / "site.css").read_text(encoding="utf-8")

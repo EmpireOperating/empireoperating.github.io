@@ -308,8 +308,12 @@ a { color: inherit; }
 .contact-main { width: 575px; margin: 107px 0 0 70px; text-align: left; }
 .contact-main .display-title { font-size: 47px; line-height: 1.51; letter-spacing: .025em; }
 .contact-main .ornament { width: 160px; margin: 32px 0 0; }
+.contact-copy {
+  width: 440px; margin: 25px 0 0; color: var(--ivory-soft); font-family: var(--sans);
+  font-size: 15px; font-weight: 300; line-height: 1.8;
+}
 .contact-email {
-  display: inline-block; margin-top: 38px; color: #b42128; font-family: Georgia, 'Times New Roman', serif;
+  display: inline-block; margin-top: 28px; color: #b42128; font-family: Georgia, 'Times New Roman', serif;
   font-size: 36px; letter-spacing: .005em; text-decoration: none;
   transition: color 160ms ease, transform 160ms ease;
 }
@@ -376,10 +380,11 @@ a { color: inherit; }
   .contact-page .column-art { top: 92px; height: 443px; clip-path: none; }
   .contact-page .site-shell { min-height: 585px; }
   .contact-main { width: auto; margin: 65px 20px 0; text-align: left; }
-  .contact-main .display-title { font-size: clamp(29px, 9.1vw, 44px); line-height: 1.35; letter-spacing: .01em; }
+  .contact-main .display-title { font-size: clamp(29px, 8.3vw, 40px); line-height: 1.35; letter-spacing: .01em; }
   .contact-main .ornament { margin: 27px 0 0; }
-  .contact-email { margin-top: 42px; font-size: clamp(20px, 6.7vw, 30px); overflow-wrap: anywhere; }
-  .contact-bottom { top: 534px; bottom: auto; }
+  .contact-copy { width: auto; max-width: 335px; margin-top: 22px; font-size: 13px; line-height: 1.72; }
+  .contact-email { margin-top: 28px; font-size: clamp(20px, 6.7vw, 30px); overflow-wrap: anywhere; }
+  .contact-bottom { position: relative; top: auto; right: auto; bottom: auto; left: auto; margin: 100px 0 0; }
 }
 
 @media (max-width: 380px) {
