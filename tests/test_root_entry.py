@@ -3,240 +3,137 @@ import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
+CACHE_KEY = "20260830-merged-built-around-v4"
 
 
-class RootEntryPageTests(unittest.TestCase):
+class SimplifiedProductionSiteTests(unittest.TestCase):
     def setUp(self) -> None:
         self.index = (ROOT / "index.html").read_text(encoding="utf-8")
-        self.lower = self.index.lower()
+        self.contact = (ROOT / "contact.html").read_text(encoding="utf-8")
+        self.css = (ROOT / "site.css").read_text(encoding="utf-8")
 
-    def test_root_is_the_branded_landing_document(self) -> None:
-        self.assertNotIn('http-equiv="refresh"', self.lower)
-        self.assertNotIn("enter empire operating", self.lower)
-        self.assertIn('rel="stylesheet"', self.lower)
-        self.assertIn('class="site-shell"', self.lower)
-        self.assertIn('class="display-title"', self.lower)
+    def test_root_remains_the_branded_canonical_landing_page(self) -> None:
+        lower = self.index.lower()
+        self.assertNotIn('http-equiv="refresh"', lower)
+        self.assertIn('class="site-shell"', lower)
+        self.assertIn('class="display-title"', lower)
+        self.assertIn('id="critical-shell"', lower)
+        self.assertIn("background: #040404", lower)
         self.assertIn(
             '<link rel="canonical" href="https://empireoperating.com/">',
-            self.lower,
+            lower,
         )
-
-    def test_root_has_immediate_branded_canvas_before_external_css(self) -> None:
-        self.assertIn('id="critical-shell"', self.lower)
-        self.assertIn("background: #040404", self.lower)
-
-    def test_home_metadata_and_navigation_use_the_operating_systems_positioning(self) -> None:
-        expected_description = (
-            "Empire Operating builds practical operating layers that connect a business’s "
-            "people, tools, and channels—so important work is captured, owned, and moved forward."
-        )
-        for page in ("index.html", "about.html"):
-            document = (ROOT / page).read_text(encoding="utf-8")
-            self.assertIn("<title>Empire Operating | Practical Operating Systems</title>", document)
-            self.assertIn(expected_description, document)
-            self.assertIn('href="index.html" aria-current="page">Home</a>', document)
-            self.assertNotIn("Business Automation", document)
-            self.assertNotIn("automates repetitive business tasks", document)
-
-        contact = (ROOT / "contact.html").read_text(encoding="utf-8")
-        self.assertIn('href="index.html">Home</a>', contact)
-        self.assertNotIn(">About<", contact)
-
-    def test_all_pages_use_the_current_stylesheet_cache_key(self) -> None:
-        for page in ("index.html", "about.html", "contact.html"):
-            document = (ROOT / page).read_text(encoding="utf-8")
-            self.assertIn(
-                'href="site.css?v=20260829-short-contact-heading-v1"',
-                document,
-            )
-
-    def test_about_duplicate_points_to_root_canonical(self) -> None:
-        about = (ROOT / "about.html").read_text(encoding="utf-8").lower()
+        self.assertIn("<title>Empire Operating | Practical Operating Systems</title>", self.index)
         self.assertIn(
-            '<link rel="canonical" href="https://empireoperating.com/">',
-            about,
+            "Empire Operating builds practical operating layers that connect a business’s people, tools, and channels—so important work is captured, owned, and moved forward.",
+            self.index,
         )
+        self.assertNotIn("Business Automation", self.index)
+        self.assertNotIn("automates repetitive business tasks", self.index)
 
-    def test_about_duplicate_uses_the_current_message(self) -> None:
-        about = (ROOT / "about.html").read_text(encoding="utf-8")
-        self.assertIn("Built around your business.", about)
-        self.assertIn("Start the conversation", about)
-        self.assertNotIn("Free consultation", about)
-        self.assertNotIn("Book a free consultation", about)
-        self.assertNotIn("A few possible starting points", about)
+    def test_information_rich_about_page_is_preserved_in_git_but_not_shipped(self) -> None:
+        self.assertFalse((ROOT / "about.html").exists())
+        self.assertNotIn('href="about.html"', self.index)
+        self.assertNotIn('href="about.html"', self.contact)
 
-    def test_hero_keeps_the_title_and_uses_the_operating_layer_copy(self) -> None:
-        expected_title = (
+    def test_navigation_contains_only_home_and_contact(self) -> None:
+        self.assertIn('<a href="index.html" aria-current="page">Home</a>', self.index)
+        self.assertIn('<a href="contact.html">Contact</a>', self.index)
+        self.assertIn('<a href="index.html">Home</a>', self.contact)
+        self.assertIn('<a href="contact.html" aria-current="page">Contact</a>', self.contact)
+        for document in (self.index, self.contact):
+            self.assertNotIn('>About</a>', document)
+
+    def test_public_pages_use_the_current_stylesheet_cache_key(self) -> None:
+        expected = f'href="site.css?v={CACHE_KEY}"'
+        for document in (self.index, self.contact):
+            self.assertIn(expected, document)
+
+    def test_home_preserves_the_original_hero_block(self) -> None:
+        protected = (
             "We build systems",
             "that give you",
             "your time back",
-        )
-        expected_copy = (
             "Most businesses already have many of the tools they need. What they often lack is an operating layer that connects those tools, people, and channels into one coherent system.",
             "Once connected, the result is less time spent manually coordinating work—and fewer opportunities, follow-ups, and important details falling through the cracks.",
         )
-        for page in ("index.html", "about.html"):
-            document = (ROOT / page).read_text(encoding="utf-8")
-            for expected in (*expected_title, *expected_copy):
-                self.assertIn(expected, document)
-            self.assertNotIn("We automate your most repetitive business tasks", document)
-            self.assertNotIn("Your family, your hobbies, or growing your business.", document)
+        for phrase in protected:
+            self.assertIn(phrase, self.index)
 
-    def test_workflow_example_uses_the_operating_layer_copy_on_both_pages(self) -> None:
-        expected = (
-            "WORK ARRIVES",
-            "THE OPERATING LAYER",
-            "WORK MOVES FORWARD",
-            "Capture it once.",
-            "Give it a clear path.",
-            "Ready for action.",
-            "Inquiries, emails, and calls",
-            "Connect it to the right client, job, member, or record",
-            "The right person can see what needs attention",
-            "Forms, documents, and requests",
-            "Make the owner, status, next step, and due date visible",
-            "Follow-ups happen at the right time",
-            "Team updates and internal notes",
-            "Handle routine coordination and reminders",
-            "Clients receive clear, consistent responses",
-            "Work from the tools already in use",
-            "Keep a reliable record of what happened",
-            "Managers can see what is moving, waiting, or stuck",
+    def test_home_uses_the_approved_built_for_introduction(self) -> None:
+        self.assertIn('<h2 id="team-owned-title">Built for your business.</h2>', self.index)
+        self.assertIn(
+            "We learn how you run your business, then make the parts causing the most friction easier.",
+            self.index,
         )
-        for page in ("index.html", "about.html"):
-            document = (ROOT / page).read_text(encoding="utf-8")
-            self.assertIn('class="possibilities"', document.lower())
-            for copy in expected:
-                self.assertIn(copy, document)
-            self.assertNotIn("Things coming in", document)
-            self.assertNotIn("What happens next", document)
-            self.assertNotIn("Useful things coming out", document)
-            self.assertNotIn("Sort. Check.", document)
-            self.assertNotIn("Move it forward.", document)
-            self.assertNotIn("A clean reply draft", document)
+        self.assertIn(
+            "The system should fit your business, not the other way around.",
+            self.index,
+        )
+        self.assertNotIn("Built around your business.", self.index)
+        self.assertNotIn("HOW WE HELP.", self.index)
 
-    def test_tailored_business_block_precedes_the_workflow_example_on_both_pages(self) -> None:
-        for page in ("index.html", "about.html"):
-            document = (ROOT / page).read_text(encoding="utf-8")
-            tailored = document.index('<section class="tailored"')
-            example = document.index('<div class="system-map"')
-            self.assertLess(tailored, example)
-            self.assertIn("Built around your business.", document)
-            self.assertIn("Your business has its own bottleneck.", document)
-            self.assertIn(
-                "The system should fit your business, not the other way around.",
-                document,
-            )
-
-    def test_tailored_copy_introduces_the_workflow_below(self) -> None:
-        for page in ("index.html", "about.html"):
-            document = (ROOT / page).read_text(encoding="utf-8")
-            self.assertIn(
-                "The workflow below is only one example. Your business has its own bottleneck.",
-                document,
-            )
-            self.assertNotIn("This is only one example. Your business has its own bottleneck.", document)
-
-    def test_team_owned_system_section_precedes_the_conversation_on_both_pages(self) -> None:
+    def test_home_explains_understand_build_and_handoff(self) -> None:
         expected = (
-            "A SYSTEM YOUR TEAM CAN OWN.",
-            "We map your workflows and identify the process creating the most friction. Then we build the smallest useful system to make it reliable, document the handoff, and keep improving it when you need help.",
             "01 / UNDERSTAND",
             "MAP THE WORK.",
-            "Before we design anything, we learn how your business actually runs—who does what, where work enters, how it moves between people and tools, and where it slows down or gets missed.",
+            "We find where work comes in, who handles it, and where it slows down or gets missed.",
             "02 / BUILD",
-            "MAKE IT RELIABLE.",
-            "We connect the tools you already use into a clear operating layer—shared operational record, a dashboard—or whatever form of operational oversight your particular workflows require.",
+            "BUILD THE OPERATING LAYER.",
+            "We connect the tools you already use, cut repetitive work, and give you a clearer view of your business.",
             "03 / HANDOFF",
-            "KEEP IT YOURS.",
-            "Your business keeps control of its data and day-to-day tools. We remain available for maintenance and thoughtful improvements.",
+            "KEEP CONTROL.",
+            "Your team owns the system. We show you how it works and stay available to maintain or improve it.",
         )
-        for page in ("index.html", "about.html"):
-            document = (ROOT / page).read_text(encoding="utf-8")
-            section = document.index('<section class="team-owned-system"')
-            consultation = document.index('<section class="consultation"')
-            self.assertLess(section, consultation)
-            for copy in expected:
-                self.assertIn(copy, document)
+        for phrase in expected:
+            self.assertIn(phrase, self.index)
 
-    def test_team_owned_system_section_has_a_responsive_three_stage_card(self) -> None:
-        css = (ROOT / "site.css").read_text(encoding="utf-8")
-        self.assertIn(".team-owned-system", css)
-        self.assertIn(".team-owned-stages", css)
-        self.assertIn("grid-template-columns: repeat(3, 1fr);", css)
-        self.assertIn("background: var(--black);", css)
-        self.assertIn("font-family: var(--display);", css)
-        self.assertNotIn("background: #172839;", css)
-        self.assertNotIn("border-radius: 6px;", css)
-        team_section = css.split(".team-owned-system {", 1)[1].split("}", 1)[0]
-        self.assertNotIn("border-top", team_section)
-        self.assertIn("border-bottom: 1px solid var(--line);", team_section)
-        mobile = css.split("@media (max-width: 700px)", 1)[1].split("@media (max-width: 380px)", 1)[0]
-        self.assertIn(".team-owned-stages { grid-template-columns: 1fr; }", mobile)
+    def test_home_omits_the_rejected_workflow_map_and_dense_duplicate_copy(self) -> None:
+        self.assertNotIn('<section class="possibilities"', self.index)
+        self.assertNotIn('<div class="system-map"', self.index)
+        rejected = (
+            "WORK COMES IN",
+            "KEEP IT ORGANIZED",
+            "WORK GETS DONE",
+            "Your business has its own bottleneck.",
+            "opportunities that are currently slipping through",
+            "whatever form of operational oversight",
+        )
+        for phrase in rejected:
+            self.assertNotIn(phrase, self.index)
 
-    def test_consultation_starts_an_email_conversation_without_booking(self) -> None:
+    def test_home_flows_from_hero_to_process_to_conversation(self) -> None:
+        hero = self.index.index('<section class="about-upper"')
+        process = self.index.index('<section class="team-owned-system"')
+        conversation = self.index.index('<section class="consultation"')
+        self.assertLess(hero, process)
+        self.assertLess(process, conversation)
+
+    def test_home_restores_the_warm_email_first_invitation(self) -> None:
         self.assertIn('<h2 id="consultation-title">Start the conversation</h2>', self.index)
         self.assertIn(
             "Tell us about your business. We’d enjoy hearing about what is working well and what you would like to improve. If there is a way we can help, we’d be glad to talk it through.",
             self.index,
         )
-        self.assertIn("Start the conversation", self.index)
         self.assertIn("subject=Start%20the%20conversation", self.index)
-        self.assertNotIn("Free consultation", self.index)
         self.assertNotIn("Book a free consultation", self.index)
-        self.assertNotIn("Let's find the part worth fixing.", self.index)
-        self.assertNotIn("Tell me what keeps repeating", self.index)
-        self.assertNotIn("Let's talk about your business and see if we can", self.index)
 
-    def test_contact_page_uses_the_contact_invitation(self) -> None:
-        contact = (ROOT / "contact.html").read_text(encoding="utf-8")
-        css = (ROOT / "site.css").read_text(encoding="utf-8")
-        self.assertIn("Have a question or", contact)
-        self.assertIn("want to learn more?", contact)
-        self.assertIn("We’d be glad to hear from you.", contact)
-        self.assertNotIn("want to learn more about", contact)
-        self.assertNotIn("Empire Operating?", contact)
-        self.assertNotIn("Tell me about", contact)
-        mobile = css.split("@media (max-width: 700px)", 1)[1].split("@media (max-width: 380px)", 1)[0]
-        self.assertIn(".contact-main .display-title { font-size: clamp(28px, 7.5vw, 36px);", mobile)
-        self.assertIn(".contact-bottom { position: relative; top: auto; right: auto; bottom: auto; left: auto; margin: 100px 0 0; }", mobile)
+    def test_contact_page_keeps_the_direct_invitation(self) -> None:
+        self.assertIn("Have a question or", self.contact)
+        self.assertIn("want to learn more?", self.contact)
+        self.assertIn("We’d be glad to hear from you.", self.contact)
+        self.assertIn("empireoperating@proton.me", self.contact)
 
-    def test_added_section_uses_the_canonical_brand_red(self) -> None:
-        css = (ROOT / "site.css").read_text(encoding="utf-8")
-        self.assertIn("--red: #9b1218;", css)
-        self.assertIn("--red-readable: #9b1218;", css)
-        self.assertNotIn("--red-readable: #cf4b51;", css)
-
-    def test_workflow_transitions_use_map_rules_without_outer_duplicates(self) -> None:
-        css = (ROOT / "site.css").read_text(encoding="utf-8")
-        tailored = css.split(".tailored {", 1)[1].split("}", 1)[0]
-        possibilities = css.split(".possibilities {", 1)[1].split("}", 1)[0]
-        system_map = css.split(".system-map {", 1)[1].split("}", 1)[0]
-        self.assertNotIn("border-bottom", tailored)
-        self.assertNotIn("border-bottom", possibilities)
-        self.assertIn("border-top: 1px solid var(--line);", system_map)
-        self.assertIn("border-bottom: 1px solid var(--line);", system_map)
-
-    def test_narrow_screens_use_readable_navigation_and_workflow_text(self) -> None:
-        css = (ROOT / "site.css").read_text(encoding="utf-8")
-        mobile = css.split("@media (max-width: 700px)", 1)[1].split("@media (max-width: 380px)", 1)[0]
-        self.assertIn(".site-nav { gap: 18px; margin-top: 14px; font-size: 11px; }", mobile)
-        self.assertIn(".map-column small { font-size: 12px; }", mobile)
-        self.assertIn(".map-column ul { font-size: 14px; }", mobile)
-        self.assertIn(".consultation-copy { width: auto; max-width: 355px; font-size: 13px;", mobile)
-
-    def test_desktop_hero_rule_uses_the_tighter_post_reorder_spacing(self) -> None:
-        css = (ROOT / "site.css").read_text(encoding="utf-8")
-        desktop = css.split("@media (max-width: 700px)", 1)[0]
-        rule = desktop.split(".section-rule", 1)[1].split("}", 1)[0]
-        self.assertIn("margin: 128px 0 0;", rule)
-
-    def test_workflow_connectors_use_rules_and_diamonds_not_arrows(self) -> None:
-        css = (ROOT / "site.css").read_text(encoding="utf-8")
-        connector = css.split(".map-arrow::after", 1)[1].split("}", 1)[0]
-        self.assertNotIn("content: '→';", connector)
-        self.assertIn("border: 1px solid var(--red-readable);", connector)
-        self.assertIn("rotate(45deg)", connector)
+    def test_site_keeps_the_canonical_visual_grammar_and_mobile_layout(self) -> None:
+        self.assertIn("--ivory: #c6aa92;", self.css)
+        self.assertIn("--black: #040404;", self.css)
+        self.assertIn("--red: #9b1218;", self.css)
+        self.assertIn(".team-owned-stages { display: grid; grid-template-columns: repeat(3, 1fr); }", self.css)
+        self.assertNotIn("background: #172839;", self.css)
+        self.assertNotIn("border-radius: 6px;", self.css)
+        mobile = self.css.split("@media (max-width: 700px)", 1)[1].split("@media (max-width: 380px)", 1)[0]
+        self.assertIn(".team-owned-stages { grid-template-columns: 1fr; }", mobile)
+        self.assertIn(".site-nav", mobile)
 
 
 if __name__ == "__main__":
