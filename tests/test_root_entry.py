@@ -3,7 +3,7 @@ import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CACHE_KEY = "20260830-copy-color-v1"
+CACHE_KEY = "20260830-unified-ivory-v1"
 
 
 class SimplifiedProductionSiteTests(unittest.TestCase):
@@ -125,7 +125,8 @@ class SimplifiedProductionSiteTests(unittest.TestCase):
         self.assertIn("empireoperating@proton.me", self.contact)
 
     def test_site_keeps_the_canonical_visual_grammar_and_mobile_layout(self) -> None:
-        self.assertIn("--ivory: #c6aa92;", self.css)
+        self.assertIn("--ivory: #ddcbb9;", self.css)
+        self.assertIn("--ivory-soft: #ddcbb9;", self.css)
         self.assertIn("--black: #040404;", self.css)
         self.assertIn("--red: #9b1218;", self.css)
         self.assertIn(".team-owned-stages { display: grid; grid-template-columns: repeat(3, 1fr); }", self.css)
@@ -150,8 +151,19 @@ class SimplifiedProductionSiteTests(unittest.TestCase):
             self.assertIn(declaration, block, f"{selector} should include {declaration}")
 
     def test_supporting_copy_uses_only_the_canonical_soft_ivory(self) -> None:
-        intro = self.css.split(".team-owned-intro p", 1)[1].split("}", 1)[0]
-        self.assertIn("color: var(--ivory-soft);", intro)
+        for selector in (
+            ".about-copy",
+            ".team-owned-intro p",
+            ".team-owned-stage > p:last-child",
+            ".consultation-copy",
+            ".contact-copy",
+        ):
+            block = self.css.split(selector, 1)[1].split("}", 1)[0]
+            self.assertIn(
+                "color: var(--ivory-soft);",
+                block,
+                f"{selector} should use the same approved ivory as headings",
+            )
         self.assertNotIn("#b2a198", self.css)
 
 

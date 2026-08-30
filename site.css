@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Inter:wght@300;400&family=IBM+Plex+Mono:wght@400&display=swap');
 
 :root {
-  --ivory: #c6aa92;
-  --ivory-soft: #aa9b91;
+  --ivory: #ddcbb9;
+  --ivory-soft: #ddcbb9;
   --black: #040404;
   --red: #9b1218;
   --red-dark: #5a0609;
@@ -267,7 +267,7 @@ a { color: inherit; }
 }
 .team-owned-stage > p:last-child {
   margin: 0;
-  color: #aa9b91;
+  color: var(--ivory-soft);
   font-family: var(--sans);
   font-size: 15px;
   font-weight: 400;
@@ -321,7 +321,7 @@ a { color: inherit; }
 .contact-email:hover, .contact-email:focus-visible { color: #d33a40; transform: translateY(-1px); }
 .contact-bottom { position: absolute; top: 850px; right: 0; bottom: auto; left: 0; margin: 0; }
 
-:focus-visible { outline: 2px solid #c6aa92; outline-offset: 4px; }
+:focus-visible { outline: 2px solid var(--ivory); outline-offset: 4px; }
 
 @media (max-width: 700px) {
   .site-shell { min-height: 100svh; padding-bottom: 42px; }
