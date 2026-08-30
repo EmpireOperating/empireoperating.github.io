@@ -119,8 +119,8 @@ a { color: inherit; }
   margin: 40px 0 0 70px;
   color: var(--ivory-soft);
   font-family: var(--sans);
-  font-size: 15px;
-  font-weight: 300;
+  font-size: 16px;
+  font-weight: 400;
   line-height: 2.02;
 }
 .about-copy p { margin: 0; }
@@ -239,8 +239,8 @@ a { color: inherit; }
   max-width: 455px;
   color: #b2a198;
   font-family: var(--sans);
-  font-size: 15px;
-  font-weight: 300;
+  font-size: 16px;
+  font-weight: 400;
   line-height: 1.9;
 }
 .team-owned-intro-copy p + p { margin-top: 14px; }
@@ -269,8 +269,8 @@ a { color: inherit; }
   margin: 0;
   color: #aa9b91;
   font-family: var(--sans);
-  font-size: 14px;
-  font-weight: 300;
+  font-size: 15px;
+  font-weight: 400;
   line-height: 1.85;
 }
 
@@ -282,7 +282,7 @@ a { color: inherit; }
 .consultation .ornament { width: 110px; margin: 19px auto 22px; }
 .consultation-copy {
   width: 480px; margin: 0 auto; color: var(--ivory-soft); font-family: var(--sans);
-  font-size: 14px; font-weight: 300; line-height: 1.9;
+  font-size: 16px; font-weight: 400; line-height: 1.9;
 }
 .consultation-copy span { display: block; }
 .cta {
@@ -311,7 +311,7 @@ a { color: inherit; }
 .contact-main .ornament { width: 160px; margin: 32px 0 0; }
 .contact-copy {
   width: 440px; margin: 25px 0 0; color: var(--ivory-soft); font-family: var(--sans);
-  font-size: 15px; font-weight: 300; line-height: 1.8;
+  font-size: 16px; font-weight: 400; line-height: 1.8;
 }
 .contact-email {
   display: inline-block; margin-top: 28px; color: #b42128; font-family: Georgia, 'Times New Roman', serif;

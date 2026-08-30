@@ -3,7 +3,7 @@ import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CACHE_KEY = "20260830-merged-built-around-v4"
+CACHE_KEY = "20260830-copy-legibility-v1"
 
 
 class SimplifiedProductionSiteTests(unittest.TestCase):
@@ -134,6 +134,20 @@ class SimplifiedProductionSiteTests(unittest.TestCase):
         mobile = self.css.split("@media (max-width: 700px)", 1)[1].split("@media (max-width: 380px)", 1)[0]
         self.assertIn(".team-owned-stages { grid-template-columns: 1fr; }", mobile)
         self.assertIn(".site-nav", mobile)
+
+    def test_supporting_copy_uses_comfortable_desktop_reading_sizes(self) -> None:
+        desktop = self.css.split("@media (max-width: 700px)", 1)[0]
+        for selector, declaration in (
+            (".about-copy", "font-size: 16px;"),
+            (".about-copy", "font-weight: 400;"),
+            (".team-owned-intro p", "font-size: 16px;"),
+            (".team-owned-stage > p:last-child", "font-size: 15px;"),
+            (".team-owned-stage > p:last-child", "font-weight: 400;"),
+            (".consultation-copy", "font-size: 16px;"),
+            (".contact-copy", "font-size: 16px;"),
+        ):
+            block = desktop.split(selector, 1)[1].split("}", 1)[0]
+            self.assertIn(declaration, block, f"{selector} should include {declaration}")
 
 
 if __name__ == "__main__":
