@@ -3,7 +3,7 @@ import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CACHE_KEY = "20260830-copy-legibility-v1"
+CACHE_KEY = "20260830-copy-color-v1"
 
 
 class SimplifiedProductionSiteTests(unittest.TestCase):
@@ -148,6 +148,11 @@ class SimplifiedProductionSiteTests(unittest.TestCase):
         ):
             block = desktop.split(selector, 1)[1].split("}", 1)[0]
             self.assertIn(declaration, block, f"{selector} should include {declaration}")
+
+    def test_supporting_copy_uses_only_the_canonical_soft_ivory(self) -> None:
+        intro = self.css.split(".team-owned-intro p", 1)[1].split("}", 1)[0]
+        self.assertIn("color: var(--ivory-soft);", intro)
+        self.assertNotIn("#b2a198", self.css)
 
 
 if __name__ == "__main__":
