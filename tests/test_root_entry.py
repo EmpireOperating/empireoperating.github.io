@@ -3,7 +3,7 @@ import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CACHE_KEY = "20260830-unified-ivory-v1"
+CACHE_KEY = "20260830-two-tone-ivory-v1"
 
 
 class SimplifiedProductionSiteTests(unittest.TestCase):
@@ -125,8 +125,8 @@ class SimplifiedProductionSiteTests(unittest.TestCase):
         self.assertIn("empireoperating@proton.me", self.contact)
 
     def test_site_keeps_the_canonical_visual_grammar_and_mobile_layout(self) -> None:
-        self.assertIn("--ivory: #ddcbb9;", self.css)
-        self.assertIn("--ivory-soft: #ddcbb9;", self.css)
+        self.assertIn("--ivory: #c4a77d;", self.css)
+        self.assertIn("--ivory-soft: #b89c83;", self.css)
         self.assertIn("--black: #040404;", self.css)
         self.assertIn("--red: #9b1218;", self.css)
         self.assertIn(".team-owned-stages { display: grid; grid-template-columns: repeat(3, 1fr); }", self.css)
@@ -162,7 +162,7 @@ class SimplifiedProductionSiteTests(unittest.TestCase):
             self.assertIn(
                 "color: var(--ivory-soft);",
                 block,
-                f"{selector} should use the same approved ivory as headings",
+                f"{selector} should use the approved copy ivory",
             )
         self.assertNotIn("#b2a198", self.css)
 
