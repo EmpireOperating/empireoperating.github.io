@@ -4,6 +4,10 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 CACHE_KEY = "20260830-two-tone-ivory-v1"
+WEB_ANALYTICS_SCRIPT = (
+    '<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" '
+    'data-cf-beacon=\'{"token": "3c84151dfd63412f802c2cf1a2fbf10e"}\'></script>'
+)
 
 
 class SimplifiedProductionSiteTests(unittest.TestCase):
@@ -48,6 +52,10 @@ class SimplifiedProductionSiteTests(unittest.TestCase):
         expected = f'href="site.css?v={CACHE_KEY}"'
         for document in (self.index, self.contact):
             self.assertIn(expected, document)
+
+    def test_public_pages_include_the_cloudflare_web_analytics_beacon(self) -> None:
+        for document in (self.index, self.contact):
+            self.assertIn(WEB_ANALYTICS_SCRIPT, document)
 
     def test_home_preserves_the_original_hero_block(self) -> None:
         protected = (
