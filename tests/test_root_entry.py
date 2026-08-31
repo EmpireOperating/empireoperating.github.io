@@ -85,7 +85,7 @@ class SimplifiedProductionSiteTests(unittest.TestCase):
         expected = (
             "01 / UNDERSTAND",
             "MAP THE WORK.",
-            "We find where work comes in, who handles it, and where it slows down or gets missed.",
+            "We identify the repeatable tasks still handled manually, who touches them, and where time gets lost.",
             "02 / BUILD",
             "BUILD THE OPERATING LAYER.",
             "We connect the tools you already use, cut repetitive work, and give you a clearer view of your business.",
