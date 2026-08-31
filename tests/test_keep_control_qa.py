@@ -10,7 +10,7 @@ class KeepControlQATests(unittest.TestCase):
         index = (ROOT / "index.html").read_text(encoding="utf-8")
 
         self.assertIn(
-            "Your team stays in control. We show you how the system works and remain available to maintain or improve it.",
+            "You stay in control. We show you how the system works and remain available to maintain or improve it.",
             index,
         )
         self.assertNotIn(

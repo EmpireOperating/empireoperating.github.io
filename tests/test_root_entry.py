@@ -91,7 +91,7 @@ class SimplifiedProductionSiteTests(unittest.TestCase):
             "We build simple, reliable automations around the tools you already use—so routine tasks move forward with less manual effort.",
             "03 / HANDOFF",
             "KEEP CONTROL.",
-            "Your team stays in control. We show you how the system works and remain available to maintain or improve it.",
+            "You stay in control. We show you how the system works and remain available to maintain or improve it.",
         )
         for phrase in expected:
             self.assertIn(phrase, self.index)
