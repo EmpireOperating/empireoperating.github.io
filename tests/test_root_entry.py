@@ -57,13 +57,13 @@ class SimplifiedProductionSiteTests(unittest.TestCase):
         for document in (self.index, self.contact):
             self.assertIn(WEB_ANALYTICS_SCRIPT, document)
 
-    def test_home_preserves_the_original_hero_block(self) -> None:
+    def test_home_uses_the_approved_repeatable_task_hero_block(self) -> None:
         protected = (
-            "We build systems",
-            "that give you",
-            "your time back",
-            "Most businesses already have many of the tools they need. What they often lack is an operating layer that connects those tools, people, and channels into one coherent system.",
-            "Once connected, the result is less time spent manually coordinating work—and fewer opportunities, follow-ups, and important details falling through the cracks.",
+            "We help businesses",
+            "automate repeatable",
+            "tasks that are costing",
+            "them valuable time.",
+            "Even small repeatable tasks can add up to hours each day—and tens of hours each week.",
         )
         for phrase in protected:
             self.assertIn(phrase, self.index)
