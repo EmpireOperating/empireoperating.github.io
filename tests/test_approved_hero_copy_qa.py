@@ -11,9 +11,9 @@ class ApprovedHeroCopyQATests(unittest.TestCase):
 
         for phrase in (
             "We help businesses",
-            "automate repeatable",
-            "tasks that are costing",
-            "them valuable time.",
+            "automate repeatable tasks",
+            "that are costing them",
+            "valuable time.",
             "Even small repeatable tasks can add up to hours each day—and tens of hours each week.",
         ):
             self.assertIn(phrase, index)

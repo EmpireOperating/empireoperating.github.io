@@ -97,6 +97,7 @@ a { color: inherit; }
 .about-upper { position: relative; isolation: isolate; overflow: hidden; padding-top: 107px; }
 .about-page .column-art { z-index: -1; top: -9px; bottom: 0; height: auto; }
 .about-hero { width: 575px; margin: 0 0 0 70px; }
+.hero-task-hero { width: 680px; }
 .display-title {
   margin: 0;
   font-family: var(--display);
@@ -108,6 +109,7 @@ a { color: inherit; }
 }
 .display-title span { display: block; white-space: nowrap; }
 .display-title .accent { color: var(--red); }
+.hero-task-title { font-size: 40px; line-height: 1.45; }
 
 .ornament { display: flex; align-items: center; gap: 9px; width: 160px; }
 .ornament::before, .ornament::after { height: 1px; flex: 1; content: ''; background: rgba(198,170,146,.62); }
@@ -342,6 +344,8 @@ a { color: inherit; }
   .about-hero { width: auto; margin: 0 20px; }
   .display-title { font-size: clamp(29px, 9.1vw, 44px); line-height: 1.35; letter-spacing: .01em; }
   .display-title span { white-space: normal; }
+  .hero-task-title { font-size: clamp(29px, 9.1vw, 40px); line-height: 1.35; }
+  .hero-task-title span { white-space: normal; }
   .hero-ornament { margin: 27px 0 0 22px; }
   .about-copy { max-width: 92%; margin: 31px 22px 0; font-size: 13px; line-height: 1.78; }
   .section-rule { margin-top: 68px; }
