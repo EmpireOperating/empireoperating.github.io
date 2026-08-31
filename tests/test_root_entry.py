@@ -87,7 +87,7 @@ class SimplifiedProductionSiteTests(unittest.TestCase):
             "MAP THE WORK.",
             "We identify the repeatable tasks still handled manually, who touches them, and where time gets lost.",
             "02 / BUILD",
-            "BUILD THE OPERATING LAYER.",
+            "AUTOMATE THE TASKS.",
             "We build simple, reliable automations around the tools you already use—so routine tasks move forward with less manual effort.",
             "03 / HANDOFF",
             "KEEP CONTROL.",
