@@ -88,7 +88,7 @@ class SimplifiedProductionSiteTests(unittest.TestCase):
             "We identify the repeatable tasks still handled manually, who touches them, and where time gets lost.",
             "02 / BUILD",
             "BUILD THE OPERATING LAYER.",
-            "We connect the tools you already use, cut repetitive work, and give you a clearer view of your business.",
+            "We build simple, reliable automations around the tools you already use—so routine tasks move forward with less manual effort.",
             "03 / HANDOFF",
             "KEEP CONTROL.",
             "Your team owns the system. We show you how it works and stay available to maintain or improve it.",
