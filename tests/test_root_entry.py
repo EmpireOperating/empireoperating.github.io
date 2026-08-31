@@ -3,7 +3,7 @@ import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CACHE_KEY = "20260831-qa-hero-structure-v1"
+CACHE_KEY = "20260831-qa-original-hero-v2"
 WEB_ANALYTICS_SCRIPT = (
     '<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" '
     'data-cf-beacon=\'{"token": "3c84151dfd63412f802c2cf1a2fbf10e"}\'></script>'
@@ -20,7 +20,7 @@ class SimplifiedProductionSiteTests(unittest.TestCase):
         lower = self.index.lower()
         self.assertNotIn('http-equiv="refresh"', lower)
         self.assertIn('class="site-shell"', lower)
-        self.assertIn('class="display-title', lower)
+        self.assertIn('class="display-title"', lower)
         self.assertIn('id="critical-shell"', lower)
         self.assertIn("background: #040404", lower)
         self.assertIn(
@@ -57,12 +57,12 @@ class SimplifiedProductionSiteTests(unittest.TestCase):
         for document in (self.index, self.contact):
             self.assertIn(WEB_ANALYTICS_SCRIPT, document)
 
-    def test_home_uses_the_approved_repeatable_task_hero_block(self) -> None:
+    def test_home_keeps_the_original_hero_and_uses_automation_support_copy(self) -> None:
         protected = (
-            "We help businesses",
-            "automate repeatable tasks",
-            "that are costing them",
-            "valuable time.",
+            "We build systems",
+            "that give you",
+            "your time back",
+            "We help businesses automate repeatable tasks that are costing them valuable time.",
             "Even small repeatable tasks can add up to hours each day—and tens of hours each week.",
         )
         for phrase in protected:

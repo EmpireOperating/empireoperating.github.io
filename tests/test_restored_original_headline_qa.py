@@ -5,8 +5,8 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 
 
-class OriginalHeroStructureQATests(unittest.TestCase):
-    def test_approved_copy_restores_the_original_display_headline_and_support_structure(self) -> None:
+class RestoredOriginalHeadlineQATests(unittest.TestCase):
+    def test_hero_keeps_the_original_display_headline_and_uses_new_copy_as_support(self) -> None:
         index = (ROOT / "index.html").read_text(encoding="utf-8")
 
         self.assertIn('<h1 class="display-title" id="about-title">', index)

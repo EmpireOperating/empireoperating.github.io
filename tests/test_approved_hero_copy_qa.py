@@ -10,15 +10,14 @@ class ApprovedHeroCopyQATests(unittest.TestCase):
         index = (ROOT / "index.html").read_text(encoding="utf-8")
 
         for phrase in (
-            "We help businesses",
-            "automate repeatable tasks",
-            "that are costing them",
-            "valuable time.",
+            "We build systems",
+            "that give you",
+            "your time back",
+            "We help businesses automate repeatable tasks that are costing them valuable time.",
             "Even small repeatable tasks can add up to hours each day—and tens of hours each week.",
         ):
             self.assertIn(phrase, index)
 
-        self.assertNotIn("We build systems", index)
         self.assertNotIn("Most businesses already have many of the tools they need.", index)
 
 
