@@ -174,6 +174,20 @@ class SimplifiedProductionSiteTests(unittest.TestCase):
             )
         self.assertNotIn("#b2a198", self.css)
 
+    def test_crawl_discovery_files_list_the_public_canonical_pages(self) -> None:
+        robots = (ROOT / "robots.txt").read_text(encoding="utf-8")
+        sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
+
+        self.assertIn("User-agent: *", robots)
+        self.assertIn("Allow: /", robots)
+        self.assertIn("Sitemap: https://empireoperating.com/sitemap.xml", robots)
+        self.assertIn('xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"', sitemap)
+        for url in (
+            "https://empireoperating.com/",
+            "https://empireoperating.com/contact.html",
+        ):
+            self.assertIn(f"<loc>{url}</loc>", sitemap)
+
 
 if __name__ == "__main__":
     unittest.main()
