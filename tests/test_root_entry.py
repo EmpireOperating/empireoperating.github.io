@@ -88,7 +88,7 @@ class SimplifiedProductionSiteTests(unittest.TestCase):
             "We identify the repeatable tasks still handled manually, who touches them, and where time gets lost.",
             "02 / BUILD",
             "AUTOMATE THE TASKS.",
-            "We build simple, reliable automations around the tools you already use—so routine tasks move forward with less manual effort.",
+            "We build simple, reliable automations around the software your business already uses—so routine tasks move forward with less manual effort.",
             "03 / HANDOFF",
             "KEEP CONTROL.",
             "You stay in control. We show you how the system works and remain available to maintain or improve it.",
