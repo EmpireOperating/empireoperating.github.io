@@ -11,11 +11,11 @@ class BuildStepQATests(unittest.TestCase):
 
         self.assertIn("AUTOMATE THE TASKS.", index)
         self.assertIn(
-            "We build simple, reliable automations around the software your business already uses—so routine tasks move forward with less manual effort.",
+            "We build simple, reliable software around the tools your business already uses—so routine tasks move forward with less manual effort.",
             index,
         )
         self.assertNotIn(
-            "We build simple, reliable automations around the tools you already use—so routine tasks move forward with less manual effort.",
+            "We build simple, reliable automations around the software your business already uses—so routine tasks move forward with less manual effort.",
             index,
         )
         self.assertNotIn(
