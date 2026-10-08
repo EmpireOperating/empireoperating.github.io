@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Operator-only usage terms for AO ECA Maintenance, with separate Google consent and exact-task approval boundaries.">
+  <meta property="og:site_name" content="Empire Operating">
+  <link rel="canonical" href="https://empireoperating.com/ao-maintenance-terms.html">
+  <title>AO Maintenance Usage Terms — Empire Operating</title>
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="site.css?v=20260831-qa-original-hero-v2">
+  <link rel="stylesheet" href="ao-maintenance.css?v=20261008-v1">
+</head>
+<body class="maintenance-page">
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Empire Operating home">
+        <img class="brand-symbol" src="assets/empire-wreath-supplied-v3.png" alt="">
+        <span class="brand-type">
+          <strong aria-label="Empire Operating">
+            <span class="brand-word brand-word-empire" aria-hidden="true"><i>E</i><i>M</i><i>P</i><i>I</i><i>R</i><i>E</i></span>
+            <span class="brand-word brand-word-operating" aria-hidden="true"><i>O</i><i>P</i><i>E</i><i>R</i><i>A</i><i>T</i><i>I</i><i>N</i><i>G</i></span>
+          </strong>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+    <main class="maintenance-main" id="main">
+      <p class="maintenance-eyebrow">Private operator tooling</p>
+      <h1>Usage terms</h1>
+      <p class="maintenance-date">Effective October 8, 2026</p>
+      <div class="ornament" aria-hidden="true"><span></span></div>
+      <p class="maintenance-lead">AO ECA Maintenance is an operator-only tool run by Empire Operating. These terms describe its operating boundaries; it is not a public service or a sign-up offer.</p>
+      <nav class="maintenance-notice-nav" aria-label="Maintenance information">
+        <a href="ao-maintenance.html">Overview</a>
+        <a href="ao-maintenance-privacy.html">Privacy notice</a>
+        <a href="ao-maintenance-terms.html" aria-current="page">Usage terms</a>
+      </nav>
+      <section aria-labelledby="authority">
+        <h2 id="authority">Operator authority</h2>
+        <p>Only the designated operator may authorize this tool. The operator must have permission to access the relevant Google account and maintain the systems involved. Visiting these pages does not grant access to a spreadsheet, Apps Script project, dashboard, or private application.</p>
+      </section>
+      <section aria-labelledby="consent">
+        <h2 id="consent">Google consent is not task approval</h2>
+        <p>The operator personally completes Google sign-in, multifactor authentication, and Google consent using a separate installed Desktop OAuth client and local loopback callback. Existing authorizations must be preserved; credentials and browser sessions must not be copied from another device or agent.</p>
+        <p>The four requested scopes provide account-wide capabilities for Drive metadata, Google Sheets, and Apps Script projects and deployments. They are not technically confined to one business system. Gmail, Calendar, Contacts, and broad Drive read/write/copy/sharing scopes are outside this grant.</p>
+        <p>Every production or QA change, deployment, deletion, permission change, and allowlist change requires separate operator approval for the exact task. Consent to a Google permission does not authorize those actions, and one task’s approval does not carry over to another.</p>
+      </section>
+      <section aria-labelledby="safeguards">
+        <h2 id="safeguards">Maintenance safeguards</h2>
+        <p>Review must precede live changes. Initial acceptance uses metadata, source and deployment checks, and a sheet header rather than member-row or legacy-cell exports. Private dashboard inspection must not submit forms, save member edits, or weaken access controls without separate authorization.</p>
+        <p>Missing API access, account settings, unexpected project or deployment identities, and permission drift are reasons to stop and request a specific decision—not permission to change settings silently. OAuth or website configuration is not approval to alter application access controls.</p>
+      </section>
+      <section aria-labelledby="ai">
+        <h2 id="ai">AI assistance and records</h2>
+        <p>AO uses AI assistance, including a configured external OpenAI service. AI output can be incomplete or wrong; it is not evidence that a change is safe or that a deployment succeeded. Live actions require scope checks, appropriate testing, and readback of the affected system.</p>
+        <p>Cloud AI processing, local records, retention limits, and deletion requests are described in the <a href="ao-maintenance-privacy.html">privacy notice</a>. Google data must be kept out of external AI processing until the provider and settings are confirmed to comply with the notice’s data-use restrictions.</p>
+      </section>
+      <section aria-labelledby="security">
+        <h2 id="security">Security and stopping access</h2>
+        <p>Do not put passwords, client secrets, authorization codes, access tokens, token-bearing callback URLs, or private member records into these pages or support messages. If credential exposure or an unexpected access condition is suspected, pause the affected workflow and have the operator approve the appropriate recovery action.</p>
+        <p>The operator may stop using the tool and revoke its Google access. Revocation does not automatically delete retained local or provider records and must not revoke unrelated grants. No uninterrupted availability, permanent authorization, or automatic backup/deletion guarantee is offered.</p>
+      </section>
+      <section aria-labelledby="contact">
+        <h2 id="contact">Questions</h2>
+        <p>Contact Empire Operating at <a href="mailto:empireoperating@proton.me">empireoperating@proton.me</a>. These operating terms do not replace a separately agreed client service agreement or authorize work beyond its approved scope.</p>
+      </section>
+      <footer class="maintenance-footer">
+        <p>Empire Operating · Private maintenance tooling</p>
+        <p><a href="ao-maintenance.html">Overview</a> · <a href="ao-maintenance-privacy.html">Privacy notice</a></p>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

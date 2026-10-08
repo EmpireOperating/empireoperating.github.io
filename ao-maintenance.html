@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AO ECA Maintenance is Empire Operating’s private, operator-only tool for approved Google Sheets and Apps Script maintenance.">
+  <meta property="og:site_name" content="Empire Operating">
+  <link rel="canonical" href="https://empireoperating.com/ao-maintenance.html">
+  <title>AO ECA Maintenance — Empire Operating</title>
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="site.css?v=20260831-qa-original-hero-v2">
+  <link rel="stylesheet" href="ao-maintenance.css?v=20261008-v1">
+</head>
+<body class="maintenance-page">
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Empire Operating home">
+        <img class="brand-symbol" src="assets/empire-wreath-supplied-v3.png" alt="">
+        <span class="brand-type">
+          <strong aria-label="Empire Operating">
+            <span class="brand-word brand-word-empire" aria-hidden="true"><i>E</i><i>M</i><i>P</i><i>I</i><i>R</i><i>E</i></span>
+            <span class="brand-word brand-word-operating" aria-hidden="true"><i>O</i><i>P</i><i>E</i><i>R</i><i>A</i><i>T</i><i>I</i><i>N</i><i>G</i></span>
+          </strong>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+    <main class="maintenance-main" id="main">
+      <p class="maintenance-eyebrow">Private operator tooling</p>
+      <h1>AO ECA Maintenance</h1>
+      <div class="ornament" aria-hidden="true"><span></span></div>
+      <p class="maintenance-lead">An AI-assisted maintenance tool operated by Empire Operating. It helps a designated operator review and maintain approved Google spreadsheets, Apps Script projects, and deployments.</p>
+      <nav class="maintenance-notice-nav" aria-label="Maintenance information">
+        <a href="ao-maintenance.html" aria-current="page">Overview</a>
+        <a href="ao-maintenance-privacy.html">Privacy notice</a>
+        <a href="ao-maintenance-terms.html">Usage terms</a>
+      </nav>
+      <section aria-labelledby="purpose">
+        <h2 id="purpose">What the tool does</h2>
+        <p>With the operator’s Google consent, AO can inspect Drive file metadata, work with Google Sheets, and review or maintain Apps Script source code and deployments. Each maintenance task is limited to the systems and actions the operator specifically authorizes.</p>
+        <p>This is an operator-only tool, not a public sign-up service. These pages explain the tool; they do not provide access to business systems, collect Google credentials, or run a sign-in flow.</p>
+      </section>
+      <section aria-labelledby="permissions">
+        <h2 id="permissions">Permissions and boundaries</h2>
+        <ul>
+          <li><strong>Drive metadata:</strong> information about files, without broad Drive file-content, copying, or sharing permission.</li>
+          <li><strong>Google Sheets:</strong> permission to read, edit, create, and delete spreadsheets.</li>
+          <li><strong>Apps Script:</strong> permission to review and maintain projects and deployments.</li>
+        </ul>
+        <p>These Google permissions are account-wide, not restricted by OAuth to a single workbook or project. Google consent provides capabilities; it does not authorize a particular live change.</p>
+        <p>Production or QA changes, deployments, deletions, and permission or allowlist changes require separate approval for the exact task. The tool does not request Gmail, Calendar, Contacts, or broad Drive read/write scopes.</p>
+      </section>
+      <section aria-labelledby="processing">
+        <h2 id="processing">How access works</h2>
+        <p>The operator personally completes Google sign-in, multifactor authentication, and consent through an installed Desktop OAuth client with a local loopback callback. The public website does not receive authorization codes or tokens.</p>
+        <p>AO can use cloud AI services to assist with authorized maintenance. Relevant task context may therefore be processed outside the local machine. The <a href="ao-maintenance-privacy.html">privacy notice</a> explains the data handling and safeguards.</p>
+      </section>
+      <section aria-labelledby="support">
+        <h2 id="support">Support and access questions</h2>
+        <p>Contact Empire Operating at <a href="mailto:empireoperating@proton.me">empireoperating@proton.me</a>. Do not email passwords, client secrets, access tokens, authorization codes, or private member records.</p>
+      </section>
+      <footer class="maintenance-footer">
+        <p>Empire Operating · Private maintenance tooling</p>
+        <p><a href="ao-maintenance-privacy.html">Privacy notice</a> · <a href="ao-maintenance-terms.html">Usage terms</a></p>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

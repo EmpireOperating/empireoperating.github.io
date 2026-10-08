@@ -1,0 +1,35 @@
+/* Additional styles are scoped to the maintenance pages; the marketing site is unchanged. */
+.maintenance-page .site-shell { min-height: 100svh; padding-bottom: 0; }
+.maintenance-main { width: min(100% - 80px, 745px); margin: 76px auto 0; padding-bottom: 48px; font-family: var(--sans); }
+.maintenance-eyebrow { margin: 0 0 16px; color: var(--ivory-soft); font-size: 12px; line-height: 1.6; letter-spacing: .12em; text-transform: uppercase; }
+.maintenance-main h1 { margin: 0; color: var(--ivory); font-family: var(--display); font-size: clamp(30px, 4vw, 43px); font-weight: 400; line-height: 1.35; letter-spacing: .02em; }
+.maintenance-main > .ornament { margin: 27px 0 30px; }
+.maintenance-main p, .maintenance-main li { color: var(--ivory-soft); font-size: 16px; line-height: 1.85; }
+.maintenance-main p { margin: 0 0 16px; }
+.maintenance-main .maintenance-eyebrow { font-size: 12px; }
+.maintenance-main .maintenance-lead { font-size: 18px; line-height: 1.8; }
+.maintenance-notice-nav { display: flex; flex-wrap: wrap; gap: 12px 28px; margin: 28px 0 40px; padding: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.maintenance-notice-nav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--ivory); font-size: 14px; text-underline-offset: 5px; }
+.maintenance-notice-nav a[aria-current='page'] { text-decoration: none; }
+.maintenance-main section { margin: 0 0 38px; }
+.maintenance-main h2 { margin: 0 0 16px; color: var(--ivory); font-family: var(--display); font-size: 22px; font-weight: 400; line-height: 1.45; }
+.maintenance-main h3 { margin: 22px 0 12px; color: var(--ivory); font-family: var(--display); font-size: 17px; font-weight: 400; line-height: 1.5; }
+.maintenance-main ul { margin: 0 0 18px; padding-left: 22px; }
+.maintenance-main li + li { margin-top: 10px; }
+.maintenance-main strong { color: var(--ivory); font-weight: 500; }
+.maintenance-main a { color: var(--ivory); overflow-wrap: anywhere; text-underline-offset: 4px; }
+.maintenance-main code { color: var(--ivory); font-family: var(--mono); font-size: .88em; overflow-wrap: anywhere; }
+.maintenance-main .maintenance-date { margin-top: 12px; font-size: 13px; }
+.maintenance-footer { margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--line); }
+.maintenance-footer p { font-size: 13px; line-height: 1.8; }
+@media (max-width: 700px) {
+  .maintenance-main { width: auto; margin: 52px 22px 0; padding-bottom: 28px; }
+  .maintenance-main h1 { font-size: 31px; }
+  .maintenance-main .maintenance-lead { font-size: 17px; }
+  .maintenance-main h2 { font-size: 20px; }
+  .maintenance-notice-nav { gap: 8px 22px; margin-bottom: 32px; }
+}
+@media (max-width: 380px) {
+  .maintenance-main { margin-inline: 18px; }
+  .maintenance-main h1 { font-size: 28px; }
+}

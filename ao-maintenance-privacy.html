@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Privacy notice for Empire Operating’s private AO ECA Maintenance tool, including Google permissions, cloud AI processing, retention, and revocation.">
+  <meta property="og:site_name" content="Empire Operating">
+  <link rel="canonical" href="https://empireoperating.com/ao-maintenance-privacy.html">
+  <title>AO Maintenance Privacy Notice — Empire Operating</title>
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="site.css?v=20260831-qa-original-hero-v2">
+  <link rel="stylesheet" href="ao-maintenance.css?v=20261008-v1">
+</head>
+<body class="maintenance-page">
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Empire Operating home">
+        <img class="brand-symbol" src="assets/empire-wreath-supplied-v3.png" alt="">
+        <span class="brand-type">
+          <strong aria-label="Empire Operating">
+            <span class="brand-word brand-word-empire" aria-hidden="true"><i>E</i><i>M</i><i>P</i><i>I</i><i>R</i><i>E</i></span>
+            <span class="brand-word brand-word-operating" aria-hidden="true"><i>O</i><i>P</i><i>E</i><i>R</i><i>A</i><i>T</i><i>I</i><i>N</i><i>G</i></span>
+          </strong>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+    <main class="maintenance-main" id="main">
+      <p class="maintenance-eyebrow">Private operator tooling</p>
+      <h1>Privacy notice</h1>
+      <p class="maintenance-date">Effective October 8, 2026</p>
+      <div class="ornament" aria-hidden="true"><span></span></div>
+      <p class="maintenance-lead">This notice covers AO ECA Maintenance, Empire Operating’s private, operator-controlled Google maintenance tool, and its informational pages. Google access requires the operator’s consent; publishing this notice does not activate access.</p>
+      <nav class="maintenance-notice-nav" aria-label="Maintenance information">
+        <a href="ao-maintenance.html">Overview</a>
+        <a href="ao-maintenance-privacy.html" aria-current="page">Privacy notice</a>
+        <a href="ao-maintenance-terms.html">Usage terms</a>
+      </nav>
+      <section aria-labelledby="access">
+        <h2 id="access">Google data and permissions</h2>
+        <p>The tool requests only these four Google OAuth scopes:</p>
+        <ul>
+          <li><code>https://www.googleapis.com/auth/drive.metadata.readonly</code> — read Drive file metadata, such as identity, type, and edit capabilities; not broad Drive file contents.</li>
+          <li><code>https://www.googleapis.com/auth/spreadsheets</code> — read, edit, create, and delete Google Sheets spreadsheets.</li>
+          <li><code>https://www.googleapis.com/auth/script.projects</code> — read Apps Script source and create or update projects.</li>
+          <li><code>https://www.googleapis.com/auth/script.deployments</code> — read and maintain Apps Script deployments.</li>
+        </ul>
+        <p>These permissions are account-wide, subject to the consenting account’s access rights. OAuth does not technically restrict them to one application. Gmail, Calendar, Contacts, and broad Drive content, write, copying, or sharing scopes are not requested.</p>
+      </section>
+      <section aria-labelledby="use">
+        <h2 id="use">Purpose and task limits</h2>
+        <p>Google data is used to review, diagnose, and carry out specifically approved spreadsheet and Apps Script maintenance. Initial API acceptance checks are limited to account identity, project/source/deployment information, workbook metadata, and a designated sheet’s header row—not member data rows or legacy cells.</p>
+        <p>A separately authorized dashboard inspection may display personal information. Further data access and any production or QA change, deployment, deletion, or permission change require explicit approval for the exact task. Google consent alone is not approval for those actions.</p>
+      </section>
+      <section aria-labelledby="processing">
+        <h2 id="processing">Local storage and cloud AI</h2>
+        <p>The tool runs on an operator-controlled computer. Its separate OAuth client and grant are kept in a local, owner-only credential directory. Credentials, authorization codes, and token-bearing callback URLs must not be placed in chats, public pages, or task records. This notice does not claim that local storage is encrypted at rest.</p>
+        <p>AO is configured to use an external AI service from OpenAI. Maintenance requests, source excerpts, API results, and other information included in agent context may be processed by that service. Local credential storage does not mean all maintenance information remains on the computer.</p>
+        <p>Google user data is not sold by Empire Operating or used for advertising. Training general-purpose AI models is not a permitted use. Before Google user data is included in external AI processing, the operator must confirm that the provider and selected settings comply with these restrictions and Google’s Limited Use requirements; otherwise that data must be kept out of external AI processing. This notice does not claim that a provider’s retention or training protections have already been verified.</p>
+        <p>Empire Operating’s use and transfer of information received from Google APIs must comply with the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including its Limited Use requirements. Human access is limited to the operator and explicitly authorized maintenance, security, or legally required purposes.</p>
+      </section>
+      <section aria-labelledby="retention">
+        <h2 id="retention">Retention and deletion</h2>
+        <p>Local source snapshots, maintenance conversations, API acceptance results, and evidence may be retained to support continuity and auditability. There is no fixed automatic deletion schedule established for these records. The operator manages their retention and removal.</p>
+        <p>External AI services may apply their own retention rules. Provider-side deletion, backup removal, and deletion of every historical copy are not guaranteed by deleting a local file. Contact Empire Operating to request a review of retained information or its deletion; any legal, security, or backup limitations will be explained rather than promising a deadline that is not established.</p>
+      </section>
+      <section aria-labelledby="control">
+        <h2 id="control">Revoke Google access</h2>
+        <p>The operator can review and revoke this tool’s access through <a href="https://myaccount.google.com/connections">Google Account third-party connections</a>. Revocation stops future access through that grant; it does not automatically delete previously retained records or information processed by an AI service. Keep unrelated Google authorizations intact.</p>
+      </section>
+      <section aria-labelledby="website">
+        <h2 id="website">These informational pages</h2>
+        <p>These pages are hosted on GitHub Pages and load Google Fonts. Hosting and font providers receive ordinary web-request information when the pages are visited. The pages contain no sign-in flow, forms, or analytics scripts and do not receive Google authorization tokens. Those statements describe these maintenance pages, not every other page on this domain.</p>
+      </section>
+      <section aria-labelledby="contact">
+        <h2 id="contact">Questions and requests</h2>
+        <p>Contact Empire Operating at <a href="mailto:empireoperating@proton.me">empireoperating@proton.me</a>. Do not include passwords, client secrets, tokens, authorization codes, or unnecessary personal records. This notice must be updated before materially different data practices are introduced.</p>
+      </section>
+      <footer class="maintenance-footer">
+        <p>Empire Operating · Private maintenance tooling</p>
+        <p><a href="ao-maintenance.html">Overview</a> · <a href="ao-maintenance-terms.html">Usage terms</a></p>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
