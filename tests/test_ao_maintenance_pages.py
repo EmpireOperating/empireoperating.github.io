@@ -5,12 +5,20 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class AOMaintenancePageTests(unittest.TestCase):
+    def test_public_pages_use_generic_tool_name_and_workflow(self):
+        for name in ("ao-maintenance.html", "ao-maintenance-privacy.html", "ao-maintenance-terms.html"):
+            with self.subTest(page=name):
+                html = (ROOT / name).read_text(encoding="utf-8")
+                self.assertNotRegex(html, r"\bAO\s+\w+\s+Maintenance\b")
+                for private_workflow_detail in ("member", "legacy cells", "legacy-cell", "initial api acceptance", "initial acceptance"):
+                    self.assertNotIn(private_workflow_detail, html.lower())
+
     def test_overview_describes_private_tool_and_links_to_notices(self):
         page = ROOT / "ao-maintenance.html"
         self.assertTrue(page.is_file(), "AO overview page is missing")
         html = page.read_text(encoding="utf-8")
         for phrase in (
-            "AO ECA Maintenance", "Empire Operating", "operator-only",
+            "AO Maintenance", "Empire Operating", "operator-only",
             "Drive file metadata", "Google Sheets", "Apps Script",
             "account-wide", "separate approval", "not a public sign-up service",
             'href="ao-maintenance-privacy.html"',
@@ -27,7 +35,7 @@ class AOMaintenancePageTests(unittest.TestCase):
         self.assertTrue(page.is_file(), "Privacy notice is missing")
         html = page.read_text(encoding="utf-8")
         for phrase in (
-            "AO ECA Maintenance", "Empire Operating", "OpenAI",
+            "AO Maintenance", "Empire Operating", "OpenAI",
             "https://www.googleapis.com/auth/drive.metadata.readonly",
             "https://www.googleapis.com/auth/spreadsheets",
             "https://www.googleapis.com/auth/script.projects",
@@ -52,7 +60,7 @@ class AOMaintenancePageTests(unittest.TestCase):
         self.assertTrue(page.is_file(), "Usage terms are missing")
         html = page.read_text(encoding="utf-8")
         for phrase in (
-            "AO ECA Maintenance", "operator-only", "not a public service",
+            "AO Maintenance", "operator-only", "not a public service",
             "Google consent", "exact task", "production", "QA", "deletion",
             "permission", "allowlist", "Gmail", "local loopback",
             "does not grant", "security", "OpenAI", "retention",
